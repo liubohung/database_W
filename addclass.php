@@ -5,10 +5,11 @@
 	if ( isset($account) && isset($_POST['choose'])) {
 		$code = $_POST['choose'] ;
 		try{
-			$check = "SELECT Person_id FROM class WHERE Person_id = '$account' AND Code ='$code';";
+			$check = "SELECT Code FROM class WHERE Person_id = '$account' AND Code ='$code';";
 			$add = "INSERT INTO class(Code,Person_id) VALUES ('$code','$account');";
 			$db = new PDO('mysql:host=localhost;dbname=class_database',$connect_un,$connect_pw);
-			$result = $db->exec($check);
+			$cc = $db->query($check);
+			$result = $cc->fetch(PDO::FETCH_BOTH);
 			if(empty($result)){
 				$row = $db->exec($add);
 				print "$row";
