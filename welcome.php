@@ -76,5 +76,10 @@
 		<br>
 		<input type="submit" name="value">
 	</form>
+	<form action="welcome2.php" method="post" class="fromcss" >
+		<a>課表預覽 <input class ="inputcss" type="text" name="subchoose"></a>
+		<br>
+		<input type="submit" name="value">
+	</form>
 </body>
 </html>

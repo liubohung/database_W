@@ -75,23 +75,11 @@
 		foreach ($list as $row) {
 			print "<tr>";
 			foreach ($row as $key => $value){
-				print "<td>$key</td>";
 				print $value;
 			}
 			print "</tr>";
 		}
-			// print "<tr><td> $row[Time] </td></tr>";
-			// print "<tr>";
-			// foreach($row as $key => $value){
-			// 	if(!empty($row) ){
-			// 		print "<td> $row </td>";
-			// 	}else{
-			// 		print "<td>  </td>";
-			// 	}
-			// }
-			// print " </tr>";
 		print "</table><br>";
-		// print "<h3> 目前學分 $Tcredit </h3>"
 	?>
 	<br>
 	<form action="addclass.php" method="post" class="fromcss" >
