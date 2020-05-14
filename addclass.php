@@ -24,8 +24,17 @@
 		}	
 	}
 	function same_time($database,$cod,$ac){
-		$check_Timecod = "SELECT Day,Time FROM time WHERE Person_id = '$ac'";
-		$check_TimeS = "SELECT class.Code,Day,Time,class_detail.Name FROM time JOIN class ON class.Code = time.Code JOIN class_detail ON class.Code = class_detail.Code WHERE Person_id = '$ac' AND Day = '四' AND Time = 11; ";
+		$check_Timecod = "SELECT Day,Time FROM time WHERE Code = '$cod';";
+		$do_it = $database->query($check_Timecod);
+		$row = $do_it->fetch(PDO::FETCH_BOTH);
+		$check_TimeS = "SELECT class.Code,Day,Time FROM time JOIN class ON class.Code = time.Code JOIN class_detail ON class.Code = class_detail.Code WHERE Person_id = '$ac' GROUP BY Time HAVING Day = $row['Day'] and Time = $row['Time'];";
+		$do = $database->query($check_TimeS);
+		$row = $do->fetch(PDO::FETCH_BOTH);
+		if(empty($row)){
+			return True;
+		}else{
+			return False;
+		}
 	}
 	function allow_add($database,$cod,$ac){
 		$check_TotalS = "SELECT SUM(Credit) FROM class_detail JOIN class ON class.Code = class_detail.Code WHERE Person_id = '$ac'; ";
@@ -61,8 +70,14 @@
 			$db = new PDO('mysql:host=localhost;dbname=class_database',$connect_un,$connect_pw);
 			if( check_sec($db,$code,$account) ){
 				if( check_total($db,$code) ){
-					if(){
+					if(same_time($db,$code,$account)){
 						allow_add($db,$code,$account);
+					}else{
+						print<<<_END
+					<script>
+					alert ("該時段已有課無法加選");
+					</script>
+					_END;
 					}
 					
 				}else{
