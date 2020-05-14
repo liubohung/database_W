@@ -26,17 +26,13 @@
 	function allow_add($database,$cod,$ac){
 		$check_TotalS = "SELECT SUM(Credit) FROM class_detail JOIN class ON class.Code = class_detail.Code WHERE Person_id = '$ac'; ";
 		$get_total = $database->query($check_TotalS);
-		$total = $get_total->fetch(PDO::FETCH_ASSOC);
-
+		$total = $get_total->fetch(PDO::FETCH_ASSOC)['SUM(Credit)'];
 		$check_creditS = "SELECT Credit FROM class_detail WHERE Code ='$cod';";
 		$get_credit = $database->query($check_creditS);
-		$credit = $get_credit->fetch(PDO::FETCH_ASSOC);
-
-		if( ($total[0] + $credit[0]) > 30){
+		$credit = $get_credit->fetch(PDO::FETCH_ASSOC)['Credit'];
+		if( ($total + $credit) > 30){
 			print<<<_END
 					<script>
-					alert ('$total');
-					alert ('$credit[0]');
 					alert ("超出學分上限");
 					</script>
 					_END;
