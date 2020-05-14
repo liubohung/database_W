@@ -24,7 +24,7 @@
 							</tr> ";
 				}
 				print "</table>";
-				print "<input type=\"button\" value=\"返回查詢\" onclick=\"location.href='http://127.0.0.1/database/search.html'\"> ";
+				print "<input type=\"button\" value=\"返回查詢\" onclick=\"location.href='search.html'\"> ";
 			}
 	}else{
 		print<<<_END

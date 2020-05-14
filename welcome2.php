@@ -48,9 +48,10 @@
 		$cdata = $db->query($HELD);
 		$rows = $cdata->fetchAll(PDO::FETCH_ASSOC);
 		$db = null;
+		$tdlong = "\"80\"";
 		$list = array(
 			0=>array('零'=>"<td>  </td>" ,'一'=>"<td> 星期一 </td> ",'二'=>" <td> 星期二 </td> ",'三'=>"<td> 星期三 </td>",'四' =>"<td> 星期四 </td>",'五' =>"<td> 星期五 </td>",'六' =>"<td> 星期六 </td>",'七' =>"<td> 星期天 </td>" ),
-			1=>array('零' => "<td>8:00 - 9:00</td>",'一'=>"<td>  </td>",'二'=>"<td>  </td>",'三'=>"<td>  </td>",'四' =>"<td>  </td>",'五' =>"<td>  </td>",'六' =>"<td>  </td>",'七' => "<td>  </td>"),
+			1=>array('零' => "<td width= $tdlong >8:00 - 9:00</td>",'一'=>"<td width=$tdlong >  </td>",'二'=>"<td width=$tdlong >  </td>",'三'=>"<td width=$tdlong >  </td>",'四' =>"<td width=$tdlong >  </td>",'五' =>"<td width=$tdlong>  </td>",'六' =>"<td width=$tdlong >  </td>",'七' => "<td width=$tdlong >  </td>"),
 			2=>array('零' => "<td>9:00 - 10:00</td>",'一'=>"<td> </td>",'二'=>"<td> </td>",'三'=>"<td> </td>",'四' =>"<td> </td>",'五' =>"<td> </td>",'六' =>"<td> </td>",'七' => "<td> </td>"),
 			3=>array('零' => "<td>10:00 - 11:00</td>",'一'=>"<td> </td>",'二'=>"<td> </td>",'三'=>"<td> </td>",'四' =>"<td> </td>",'五' =>"<td> </td>",'六' =>"<td> </td>",'七' => "<td> </td>"),
 			4=>array('零' => "<td>11:00 - 12:00</td>",'一'=>"<td> </td>",'二'=>"<td> </td>",'三'=>"<td> </td>",'四' =>"<td> </td>",'五' =>"<td> </td>",'六' =>"<td> </td>",'七' => "<td> </td>"),
@@ -66,10 +67,10 @@
 			14=>array('零' => "<td>21:00 - 22:00</td>",'一'=>"<td> </td>",'二'=>"<td> </td>",'三'=>"<td> </td>",'四' =>"<td> </td>",'五' =>"<td> </td>",'六' =>"<td> </td>",'七' => "<td> </td>")
 		);
 		foreach($rows as $row){
-			$list[$row['Time']][$row['Day']] = "<td>" . $row['Code']. " </td> ";
+			$list[$row['Time']][$row['Day']] = "<td width=$tdlong >" . $row['Name'] ."<br>".$row['Code']. " </td> ";
 		}
 		print "<a> 已選課表 </a><br> ";
-		print " <table width=\"700\" style=\"line-height:25px;\" border=\"1\">";
+		print " <table style=\"line-height:25px;\" border=\"1\" align=\"center\">";
 		print "";
 		foreach ($list as $row) {
 			print "<tr>";
