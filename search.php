@@ -1,6 +1,5 @@
 <?php
 	require_once("conect.php");
-
 	if ( isset($_POST['search_class'])) {
 		$code = $_POST['search_class'];
 		$db = new PDO('mysql:host=localhost;dbname=class_database',$connect_un,$connect_pw);
@@ -34,5 +33,4 @@
 				</script>
 				_END;
 	}
-
 ?>

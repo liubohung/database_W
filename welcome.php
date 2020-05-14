@@ -48,8 +48,8 @@
 		$cdata = $db->query($ALLHELD);
 		$rows = $cdata->fetchAll(PDO::FETCH_ASSOC);
 		$db = null;
-		print "<a> 已選課表 </a><br> ";
-		print " <table width=\"700\" border=\"1\"> ";
+		print "<div style=\"text-align:center;\"><H3> 已選課表 </H3></div><br> ";
+		print " <table width=\"700\" border=\"1\" align=\"center\"> ";
 		print "<tr> <td> 開課班級 </td> <td> 課程名稱 </td> <td> 選課代號 </td> <td> 學分數 </td> <td> 必選修 </td> <td> 開課單位 </td> <td>已收授人數 </td> <td> 開課人數  </td> <td> 授課教師 </td> </tr>" ;
 		$Tcredit = 0;
 		foreach($rows as $row){
@@ -67,19 +67,19 @@
 	?>
 	<br>
 	<form action="addclass.php" method="post" class="fromcss" >
-		<a>選課代號 <input class ="inputcss" type="text" name="addchoose"></a>
+		<a> 選課代號 <input class ="inputcss" type="text" name="addchoose"></a>
 		<br>
 		<input type="submit" name="value">
 	</form>
 	<form action="subclass.php" method="post" class="fromcss" >
-		<a>退選代號 <input class ="inputcss" type="text" name="subchoose"></a>
+		<a> 退選代號 <input class ="inputcss" type="text" name="subchoose"></a>
 		<br>
 		<input type="submit" name="value">
 	</form>
 	<form action="welcome2.php" method="post" class="fromcss" >
-		<a>課表預覽 <input class ="inputcss" type="text" name="subchoose"></a>
+		<a>課表預覽 </a>
 		<br>
-		<input type="submit" name="value">
+		<input type="submit" name="gogo">
 	</form>
 </body>
 </html>

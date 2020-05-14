@@ -23,6 +23,10 @@
 			}
 		}	
 	}
+	function same_time($database,$cod,$ac){
+		$check_Timecod = "SELECT Day,Time FROM time WHERE Person_id = '$ac'";
+		$check_TimeS = "SELECT class.Code,Day,Time,class_detail.Name FROM time JOIN class ON class.Code = time.Code JOIN class_detail ON class.Code = class_detail.Code WHERE Person_id = '$ac' AND Day = '四' AND Time = 11; ";
+	}
 	function allow_add($database,$cod,$ac){
 		$check_TotalS = "SELECT SUM(Credit) FROM class_detail JOIN class ON class.Code = class_detail.Code WHERE Person_id = '$ac'; ";
 		$get_total = $database->query($check_TotalS);
@@ -57,7 +61,10 @@
 			$db = new PDO('mysql:host=localhost;dbname=class_database',$connect_un,$connect_pw);
 			if( check_sec($db,$code,$account) ){
 				if( check_total($db,$code) ){
-					allow_add($db,$code,$account);
+					if(){
+						allow_add($db,$code,$account);
+					}
+					
 				}else{
 					print<<<_END
 					<script>
