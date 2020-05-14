@@ -43,14 +43,14 @@
 	</nav>
 	<?php
 		require_once("conect.php");
-		$ALLHELD = " SELECT * FROM class_detail JOIN class ON class.Code = class_detail.Code WHERE Person_id = '$account';";
-		$Hold = "SELECT Code FROM class WHERE Person_id = '$account';" ;
+		$ALLHELD = "SELECT Class,Name,class.Code,Credit,Haveto,College,Totalnum,Nownum,Teacher_Name FROM class_detail JOIN class ON class.Code = class_detail.Code WHERE Person_id = '$account';";
 		$db = new PDO('mysql:host=localhost;dbname=class_database',$connect_un,$connect_pw);
 		$cdata = $db->query($ALLHELD);
 		$rows = $cdata->fetchAll(PDO::FETCH_ASSOC);
 		$db = null;
 		print "<a> 已選課表 </a><br> ";
 		print " <table width=\"700\" border=\"1\"> ";
+		print "<tr> <td> 開課班級 </td> <td> 課程名稱 </td> <td> 選課代號 </td> <td> 學分數 </td> <td> 必選修 </td> <td> 開課單位 </td> <td>已收授人數 </td> <td> 開課人數  </td> <td> 授課教師 </td> </tr>" ;
 		$Tcredit = 0;
 		foreach($rows as $row){
 			print "<tr> ";

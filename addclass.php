@@ -13,14 +13,42 @@
 		$check_total = "SELECT Totalnum,Nownum FROM class_detail WHERE Code ='$cod';";
 		$do_it = $database->query($check_total);
 		$row = $do_it->fetch(PDO::FETCH_BOTH);
-		if($row[0] == $row[1]){
+		if(empty($row)){
 			return false;
 		}else{
-			return True;
-		}
+			if($row[0] == $row[1]){
+				return false;
+			}else{
+				return True;
+			}
+		}	
 	}
 	function allow_add($database,$cod,$ac){
-		$add_sql = "INSERT INTO class(Code,Person_id) VALUES ('$cod','$ac');";
+		$check_TotalS = "SELECT SUM(Credit) FROM class_detail JOIN class ON class.Code = class_detail.Code WHERE Person_id = '$ac'; ";
+		$get_total = $database->query($check_TotalS);
+		$total = $get_total->fetch(PDO::FETCH_ASSOC);
+
+		$check_creditS = "SELECT Credit FROM class_detail WHERE Code ='$cod';";
+		$get_credit = $database->query($check_creditS);
+		$credit = $get_credit->fetch(PDO::FETCH_ASSOC);
+
+		if( ($total[0] + $credit[0]) > 30){
+			print<<<_END
+					<script>
+					alert ('$total');
+					alert ('$credit[0]');
+					alert ("超出學分上限");
+					</script>
+					_END;
+		}else{
+			$add_sql = "INSERT INTO class(Code,Person_id) VALUES ('$cod','$ac');";
+			$row = $database->query($add_sql);
+			print<<<_END
+					<script>
+					alert ("加選成功");
+					</script>
+					_END;
+		}
 	}
 
 	require_once("conect.php");
@@ -32,18 +60,12 @@
 			$add = "INSERT INTO class(Code,Person_id) VALUES ('$code','$account');";
 			$db = new PDO('mysql:host=localhost;dbname=class_database',$connect_un,$connect_pw);
 			if( check_sec($db,$code,$account) ){
-				if(check_total($db,$code)){
-					$row = $db->exec($add);
-					print<<<_END
-					<script>
-					alert ("加選成功");
-					setTimeout(function(){window.location.href='login.html';},1000);
-					</script>
-					_END;
+				if( check_total($db,$code) ){
+					allow_add($db,$code,$account);
 				}else{
 					print<<<_END
 					<script>
-					alert ("人數已滿無法加選");
+					alert ("無法加選");
 					</script>
 					_END;
 				}
