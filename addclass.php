@@ -27,10 +27,12 @@
 		$check_Timecod = "SELECT Day,Time FROM time WHERE Code = '$cod';";
 		$do_it = $database->query($check_Timecod);
 		$row = $do_it->fetch(PDO::FETCH_BOTH);
-		$check_TimeS = "SELECT class.Code,Day,Time FROM time JOIN class ON class.Code = time.Code JOIN class_detail ON class.Code = class_detail.Code WHERE Person_id = '$ac' GROUP BY Time HAVING Day = $row['Day'] and Time = $row['Time'];";
+		$DDD = $row['Day'];
+		$TTT = $row['Time'];
+		$check_TimeS = "SELECT class.Code,Day,Time FROM time JOIN class ON class.Code = time.Code JOIN class_detail ON class.Code = class_detail.Code WHERE Person_id = '$ac' GROUP BY Time HAVING Day = '$DDD' and Time = $TTT ;";
 		$do = $database->query($check_TimeS);
 		$row = $do->fetch(PDO::FETCH_BOTH);
-		if(empty($row)){
+		if(!empty($row)){
 			return True;
 		}else{
 			return False;

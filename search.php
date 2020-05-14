@@ -1,4 +1,4 @@
-<?php
+<?php 
 	require_once("conect.php");
 	if ( isset($_POST['search_class'])) {
 		$code = $_POST['search_class'];
