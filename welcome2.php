@@ -43,7 +43,7 @@
 	</nav>
 	<?php
 		require_once("conect.php");
-		$HELD = "SELECT class.Code,Day,Time,class_detail.Name FROM time JOIN class ON class.Code = time.Code JOIN class.Code = class_detail.Code WHERE Person_id = '$account'ORDER BY Time; ";
+		$HELD = "SELECT class.Code,Day,Time,class_detail.Name FROM time JOIN class ON class.Code = time.Code JOIN class_detail ON class.Code = class_detail.Code WHERE Person_id = '$account' ORDER BY Time;";
 		$db = new PDO('mysql:host=localhost;dbname=class_database',$connect_un,$connect_pw);
 		$cdata = $db->query($HELD);
 		$rows = $cdata->fetchAll(PDO::FETCH_ASSOC);
