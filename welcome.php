@@ -48,7 +48,7 @@
                     <li> 
                         <a href="#" aria-haspopup="true" role="button">選課情況</a>
                     </li>
-                    <<li class="dropdown">
+                    <li class="dropdown">
     				    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" >
 						<?php print "$account"; ?>
     				    	<span class="caret"></span></a>
