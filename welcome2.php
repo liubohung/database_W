@@ -50,7 +50,16 @@
    					</li>
                     <li> 
                         <a href="#" aria-haspopup="true" role="button">選課情況</a>
-                    </li>   
+                    </li>
+                    <<li class="dropdown">
+    				    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" >
+						<?php print "$account" ?>
+    				    	<span class="caret"></span></a>
+    					<ul class="dropdown-menu">
+    						<li><a href="logout.php">用戶登出</a></li>
+    					    <li><a href="chpassword.html">更改密碼</a></li>    
+    					</ul>
+    				</li>       
    			   </ul>   
   			</div>  
 		</div> 
