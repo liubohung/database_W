@@ -104,7 +104,7 @@
 	<form name="subclass" action="subclass.php" method="post" class="fromcss">
 		<a> 退選代號 <input class ="inputcss" type="text" name="subchoose"></a>
 		<br>
-		<button id="submitBtn" class="button" onclick="CheckText()"> 提交</button>
+		<button id="submitBtn" class="button" onclick="CheckText()">提交</button>
 	</form>
 	<form action="welcome2.php" method="post" class="fromcss" >
 		<a>課表預覽 </a>
