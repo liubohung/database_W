@@ -41,9 +41,6 @@
   			</div>  
 		</div> 
 	</nav>
-	<script type="text/javascript">
-		if (confirm("詢問的問題") ) {} else {}   
-	</script>
 	
 	<?php
 		require_once("conect.php");
