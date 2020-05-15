@@ -41,6 +41,12 @@
   			</div>  
 		</div> 
 	</nav>
+	<script type="text/javascript">
+		if (confirm("詢問的問題") ) {} else {}   
+			//http://ep.ckvs.tyc.edu.tw/blog/files/6-5919-9317.php
+		var name = prompt('輸入你的名稱');
+	</script>
+	
 	<?php
 		require_once("conect.php");
 		$HELD = "SELECT class.Code,Day,Time,class_detail.Name FROM time JOIN class ON class.Code = time.Code JOIN class_detail ON class.Code = class_detail.Code WHERE Person_id = '$account' ORDER BY Time;";

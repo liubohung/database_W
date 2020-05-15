@@ -13,7 +13,7 @@
 			$sub = "DELETE FROM class WHERE Person_id = '$account' AND Code ='$code';";
 			$db = new PDO('mysql:host=localhost;dbname=class_database',$connect_un,$connect_pw);
 			$do_it = $db->query($check);
-			$result = $do_it->fetch(PDO::FETCH_ASSOC);
+			$result = $do_it->fetchAll(PDO::FETCH_ASSOC);
 			if(!empty($result)){
 				if($result['Haveto'] == 'M'){
 					print<<<_END
