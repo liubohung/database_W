@@ -29,7 +29,8 @@
 		$row = $do_it->fetch(PDO::FETCH_BOTH);
 		$DDD = $row['Day'];
 		$TTT = $row['Time'];
-		$check_TimeS = "SELECT class.Code,Day,Time FROM time JOIN class ON class.Code = time.Code JOIN class_detail ON class.Code = class_detail.Code WHERE Person_id = '$ac' HAVING Day = '$DDD' and Time = $TTT ;";
+		$check_TimeS = "SELECT Day,Time FROM time JOIN class ON class.Code = time.Code WHERE Person_id = '$ac' AND Time IN ( SELECT Time FROM time WHERE class.Code = '$cod') AND Day IN ( SELECT Day FROM time WHERE class.Code = '$cod')";
+		// $check_TimeS = "SELECT class.Code,Day,Time FROM time JOIN class ON class.Code = time.Code JOIN class_detail ON class.Code = class_detail.Code WHERE Person_id = '$ac' HAVING Day = '$DDD' and Time = $TTT ;";
 		$do = $database->query($check_TimeS);
 		$row = $do->fetch(PDO::FETCH_BOTH);
 		if(empty($row)){
