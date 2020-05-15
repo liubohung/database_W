@@ -29,7 +29,7 @@
 		$row = $do_it->fetch(PDO::FETCH_BOTH);
 		$DDD = $row['Day'];
 		$TTT = $row['Time'];
-		$check_TimeS = "SELECT class.Code,Day,Time FROM time JOIN class ON class.Code = time.Code JOIN class_detail ON class.Code = class_detail.Code WHERE Person_id = '$ac' GROUP BY Time HAVING Day = '$DDD' and Time = $TTT ;";
+		$check_TimeS = "SELECT class.Code,Day,Time FROM time JOIN class ON class.Code = time.Code JOIN class_detail ON class.Code = class_detail.Code WHERE Person_id = '$ac' HAVING Day = '$DDD' and Time = $TTT ;";
 		$do = $database->query($check_TimeS);
 		$row = $do->fetch(PDO::FETCH_BOTH);
 		if(empty($row)){
@@ -93,7 +93,6 @@
 				print<<<_END
 				<script>
 				alert ("已曾經加選過");
-				setTimeout(function(){window.location.href='login.html';},1000);
 				</script>
 				_END;
 			}
