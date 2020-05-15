@@ -14,6 +14,17 @@
 			line-height: 1.2em;
 			font-size:150%; 
 		}
+		.button {
+  			border: none;
+  			color: white;
+  			padding: 60px 32px;
+  			text-align: center;
+  			text-decoration: none;
+  			display: inline-block;
+  			font-size: 16px;
+  			margin: 4px 2px;
+  			cursor: pointer;
+		}
 	</style>
 </head>
 <body>
@@ -75,15 +86,25 @@
 		print "<h3> 目前學分 $Tcredit </h3>"
 	?>
 	<br>
+	<script type="text/javascript">
+		function CheckText()
+	    {
+	    	if (confirm("是否確定退選") ) {
+	    		document.subclass.submit();
+			} else {
+				setTimeout(function(){window.location.href='welcome2.php';},1000);
+			}
+	    }
+	</script>
 	<form action="addclass.php" method="post" class="fromcss" >
 		<a> 選課代號 <input class ="inputcss" type="text" name="addchoose"></a>
 		<br>
 		<input type="submit" name="value">
 	</form>
-	<form action="subclass.php" method="post" class="fromcss" >
+	<form name="subclass" action="subclass.php" method="post" class="fromcss">
 		<a> 退選代號 <input class ="inputcss" type="text" name="subchoose"></a>
 		<br>
-		<input type="submit" name="value">
+		<button id="submitBtn" class="button" onclick="CheckText()"> 提交</button>
 	</form>
 	<form action="welcome2.php" method="post" class="fromcss" >
 		<a>課表預覽 </a>

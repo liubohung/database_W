@@ -14,7 +14,6 @@
 			line-height: 1.2em;
 			font-size:150%; 
 		}
-		<style>
 		.button {
   		border: none;
   		color: white;
@@ -25,8 +24,7 @@
   		font-size: 16px;
   		margin: 4px 2px;
   		cursor: pointer;
-}
-
+		}
 	</style>
 
 </head>
@@ -38,7 +36,7 @@
 			print "<h1> 歡迎$account </h1><br>";
 		?>
 	</header>
-	<nav class="navbar navbar-light navbar-static-top"> 
+	<nav class="navbar navbar-light navbar-static-top">
  		<div class="container">   
  			<div class="navbar-header">    
     			<a class="navbar-brand" href="Home.html">首頁</a>   
@@ -115,7 +113,7 @@
 				setTimeout(function(){window.location.href='welcome2.php';},1000);
 			}
 	    }
-	</script>>
+	</script>
 	<form action="addclass.php" method="post" class="fromcss" >
 		<a>選課代號 <input class ="inputcss" type="text" name="addchoose"></a>
 		<br>
