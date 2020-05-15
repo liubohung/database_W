@@ -43,8 +43,6 @@
 	</nav>
 	<script type="text/javascript">
 		if (confirm("詢問的問題") ) {} else {}   
-			//http://ep.ckvs.tyc.edu.tw/blog/files/6-5919-9317.php
-		var name = prompt('輸入你的名稱');
 	</script>
 	
 	<?php

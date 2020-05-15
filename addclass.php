@@ -32,7 +32,7 @@
 		$check_TimeS = "SELECT class.Code,Day,Time FROM time JOIN class ON class.Code = time.Code JOIN class_detail ON class.Code = class_detail.Code WHERE Person_id = '$ac' GROUP BY Time HAVING Day = '$DDD' and Time = $TTT ;";
 		$do = $database->query($check_TimeS);
 		$row = $do->fetch(PDO::FETCH_BOTH);
-		if(!empty($row)){
+		if(empty($row)){
 			return True;
 		}else{
 			return False;
