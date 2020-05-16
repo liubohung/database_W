@@ -17,7 +17,7 @@
 		.button {
   			border: none;
   			color: white;
-  			padding: 16px 32px;
+  			padding: 4px 3px;
   			text-align: center;
   			text-decoration: none;
   			display: inline-block;

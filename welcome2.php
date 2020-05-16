@@ -17,7 +17,7 @@
 		.button {
   		border: none;
   		color: white;
-  		padding: 7px 2px;
+  		padding: 4px 3px;
   		text-align: center;
   		text-decoration: none;
   		display: inline-block;
@@ -122,7 +122,12 @@
 	<form name="subclass" action="subclass.php" method="post" class="fromcss" >
 		<a>退選代號 <input class ="inputcss" type="text" name="subchoose"></a>
 		<br>
-		<button id="submitBtn" class="button" onclick="CheckText()">提交</button>
+		<button id="submitBtn" class="button" onclick="CheckText()"> 提交 </button>
+	</form>
+	<form action="welcome.php" method="post" class="fromcss" >
+		<a>所有課表 </a>
+		<br>
+		<input type="submit" name="gogo">
 	</form>
 </body>
 </html>
