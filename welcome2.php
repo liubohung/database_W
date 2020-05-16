@@ -129,7 +129,7 @@
 		</form>
 		<br>
 		<form action="welcome.php" method="post" class="fromcss" >
-			<a>所有課表<br></a>
+			<p>所有課表<br></p>
 			<input type="submit" name="gogo">
 		</form>
 	</div>

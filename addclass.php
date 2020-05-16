@@ -54,7 +54,9 @@
 					_END;
 		}else{
 			$add_sql = "INSERT INTO class(Code,Person_id) VALUES ('$cod','$ac');";
+			$add_class_sql = "UPDATE class_detail SET Nownum = Nownum + 1 WHERE Code='$cod';";
 			$row = $database->query($add_sql);
+			$row = $database->query($add_class_sql);
 			print<<<_END
 					<script>
 					alert ("加選成功");

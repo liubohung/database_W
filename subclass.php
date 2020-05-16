@@ -18,13 +18,16 @@
 						</script>
 					_END;
 				}
+				$sub_class_sql = "UPDATE class_detail SET Nownum = Nownum - 1 WHERE Code='$code';";
 				print<<<_END
 					<script>
 					alert ("退選成功");
 					</script>
 					_END;
 				$row = $db->exec($sub);
+				$row = $db->exec($sub_class_sql);
 			}else{
+
 				print<<<_END
 				<script>
 				alert ("無法退選");
