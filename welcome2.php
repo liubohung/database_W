@@ -11,7 +11,9 @@
 			background-color: #eaf3db; 
 		}
 		.fromcss {
-			line-height: 1.2em;
+			line-height: 24px;　　　          　/* 設定文字行距 */
+    		letter-spacing: 3px;
+			line-height: 1.5em;
 			font-size:150%; 
 		}
 		.button {
@@ -64,13 +66,13 @@
 	</nav>
 	
 	<?php
-		require_once("conect.php");
-		$HELD = "SELECT class.Code,Day,Time,class_detail.Name FROM time JOIN class ON class.Code = time.Code JOIN class_detail ON class.Code = class_detail.Code WHERE Person_id = '$account' ORDER BY Time;";
-		$db = new PDO('mysql:host=localhost;dbname=class_database',$connect_un,$connect_pw);
-		$cdata = $db->query($HELD);
-		$rows = $cdata->fetchAll(PDO::FETCH_ASSOC);
-		$db = null;
-		$tdlong = "\"80\"";
+		// require_once("conect.php");
+		// $HELD = "SELECT class.Code,Day,Time,class_detail.Name FROM time JOIN class ON class.Code = time.Code JOIN class_detail ON class.Code = class_detail.Code WHERE Person_id = '$account' ORDER BY Time;";
+		// $db = new PDO('mysql:host=localhost;dbname=class_database',$connect_un,$connect_pw);
+		// $cdata = $db->query($HELD);
+		// $rows = $cdata->fetchAll(PDO::FETCH_ASSOC);
+		// $db = null;
+		// $tdlong = "\"80\"";
 		$list = array(
 			0=>array('零'=>"<td>  </td>" ,'一'=>"<td> 星期一 </td> ",'二'=>" <td> 星期二 </td> ",'三'=>"<td> 星期三 </td>",'四' =>"<td> 星期四 </td>",'五' =>"<td> 星期五 </td>",'六' =>"<td> 星期六 </td>",'七' =>"<td> 星期天 </td>" ),
 			1=>array('零' => "<td width= $tdlong >8:00 - 9:00</td>",'一'=>"<td width=$tdlong >  </td>",'二'=>"<td width=$tdlong >  </td>",'三'=>"<td width=$tdlong >  </td>",'四' =>"<td width=$tdlong >  </td>",'五' =>"<td width=$tdlong>  </td>",'六' =>"<td width=$tdlong >  </td>",'七' => "<td width=$tdlong >  </td>"),
@@ -105,29 +107,31 @@
 	?>
 	<br>
 	<script type="text/javascript">
-		function CheckText()
-	    {
-	    	if (confirm("是否確定退選") ) {
-	    		document.subclass.submit();
-			} else {
-				setTimeout(function(){window.location.href='welcome2.php';},1000);
-			}
-	    }
+		$(document).ready(function(){
+   			$("#button").click(function(){
+   				if (confirm("是否確定退選") ) {
+	    			document.subclass.submit();
+				} else {
+					setTimeout(function(){window.location.href='welcome2.php';},1000);
+				}
+    	})
+	})	
 	</script>
-	<form action="addclass.php" method="post" class="fromcss" >
-		<a>選課代號 <input class ="inputcss" type="text" name="addchoose"></a>
+	<div style="text-align:center;">
+		<form action="addclass.php" method="post" class="fromcss" >
+			<a>選課代號<br><input class ="inputcss" type="text" name="addchoose"></a>
+			<input type="submit" name="value">
+		</form>
 		<br>
-		<input type="submit" name="value">
-	</form>
-	<form name="subclass" action="subclass.php" method="post" class="fromcss" >
-		<a>退選代號 <input class ="inputcss" type="text" name="subchoose"></a>
+		<form name="subclass" action="subclass.php" method="post" class="fromcss" onclick="return false">
+			<a>退選代號<br><input class ="inputcss" type="text" name="subchoose"></a>
+			<input type="submit" name="button" id="button" value="送出" />
+		</form>
 		<br>
-		<button id="submitBtn" class="button" onclick="CheckText()"> 提交 </button>
-	</form>
-	<form action="welcome.php" method="post" class="fromcss" >
-		<a>所有課表 </a>
-		<br>
-		<input type="submit" name="gogo">
-	</form>
+		<form action="welcome.php" method="post" class="fromcss" >
+			<a>所有課表<br></a>
+			<input type="submit" name="gogo">
+		</form>
+	</div>
 </body>
 </html>
