@@ -119,12 +119,12 @@
 	</script>
 	<div style="text-align:center;">
 		<form action="addclass.php" method="post" class="fromcss" >
-			<a>選課代號<br><input class ="inputcss" type="text" name="addchoose"></a>
+			<p>選課代號<br><input class ="inputcss" type="text" name="addchoose"></p>
 			<input type="submit" name="value">
 		</form>
 		<br>
 		<form name="subclass" action="subclass.php" method="post" class="fromcss" onclick="return false">
-			<a>退選代號<br><input class ="inputcss" type="text" name="subchoose"></a>
+			<p>退選代號<br><input class ="inputcss" type="text" name="subchoose"></p>
 			<input type="submit" name="button" id="button" value="送出" />
 		</form>
 		<br>
