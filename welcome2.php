@@ -66,13 +66,13 @@
 	</nav>
 	
 	<?php
-		// require_once("conect.php");
-		// $HELD = "SELECT class.Code,Day,Time,class_detail.Name FROM time JOIN class ON class.Code = time.Code JOIN class_detail ON class.Code = class_detail.Code WHERE Person_id = '$account' ORDER BY Time;";
-		// $db = new PDO('mysql:host=localhost;dbname=class_database',$connect_un,$connect_pw);
-		// $cdata = $db->query($HELD);
-		// $rows = $cdata->fetchAll(PDO::FETCH_ASSOC);
-		// $db = null;
-		// $tdlong = "\"80\"";
+		require_once("conect.php");
+		$HELD = "SELECT class.Code,Day,Time,class_detail.Name FROM time JOIN class ON class.Code = time.Code JOIN class_detail ON class.Code = class_detail.Code WHERE Person_id = '$account' ORDER BY Time;";
+		$db = new PDO('mysql:host=localhost;dbname=class_database',$connect_un,$connect_pw);
+		$cdata = $db->query($HELD);
+		$rows = $cdata->fetchAll(PDO::FETCH_ASSOC);
+		$db = null;
+		$tdlong = "\"80\"";
 		$list = array(
 			0=>array('零'=>"<td>  </td>" ,'一'=>"<td> 星期一 </td> ",'二'=>" <td> 星期二 </td> ",'三'=>"<td> 星期三 </td>",'四' =>"<td> 星期四 </td>",'五' =>"<td> 星期五 </td>",'六' =>"<td> 星期六 </td>",'七' =>"<td> 星期天 </td>" ),
 			1=>array('零' => "<td width= $tdlong >8:00 - 9:00</td>",'一'=>"<td width=$tdlong >  </td>",'二'=>"<td width=$tdlong >  </td>",'三'=>"<td width=$tdlong >  </td>",'四' =>"<td width=$tdlong >  </td>",'五' =>"<td width=$tdlong>  </td>",'六' =>"<td width=$tdlong >  </td>",'七' => "<td width=$tdlong >  </td>"),
