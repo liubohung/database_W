@@ -71,7 +71,6 @@
 		$db = new PDO('mysql:host=localhost;dbname=class_database',$connect_un,$connect_pw);
 		$cdata = $db->query($HELD);
 		$rows = $cdata->fetchAll(PDO::FETCH_ASSOC);
-		$db = null;
 		$tdlong = "\"80\"";
 		$list = array(
 			0=>array('零'=>"<td>  </td>" ,'一'=>"<td> 星期一 </td> ",'二'=>" <td> 星期二 </td> ",'三'=>"<td> 星期三 </td>",'四' =>"<td> 星期四 </td>",'五' =>"<td> 星期五 </td>",'六' =>"<td> 星期六 </td>",'七' =>"<td> 星期天 </td>" ),
@@ -104,6 +103,11 @@
 			print "</tr>";
 		}
 		print "</table><br>";
+		$credit_T = "SELECT Credit FROM student WHERE Student_id = '$account' ;";
+		$data_t = $db->query($credit_T);
+		$C_T_data = $data_t->fetch(PDO::FETCH_BOTH);
+		print "<h3> 目前學分 $C_T_data[Credit] </h3>";
+		$db = null;
 	?>
 	<br>
 	<script type="text/javascript">

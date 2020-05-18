@@ -37,6 +37,7 @@
 		}catch(PDOException $e){
 		print " Could't create table" . $e->getMessage();
 	}
+	$db = null;
 	header("refresh:0;url=welcome2.php");
 	}
 ?>

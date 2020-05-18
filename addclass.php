@@ -24,15 +24,10 @@
 		}	
 	}
 	function same_time($database,$cod,$ac){
-		$check_Timecod = "SELECT Day,Time FROM time WHERE Code = '$cod';";
+		//SELECT time.Day,time.Time FROM time JOIN class on time.Code = class.Code WHERE class.Person_id = 'D0752912'; 查詢所有課程
+		$check_Timecod = "SELECT * FROM (SELECT Day,Time FROM time WHERE Code = '$cod') a INNER JOIN (SELECT time.Day,time.Time FROM time JOIN class on time.Code = class.Code WHERE class.Person_id = '$ac') b WHERE a.Day = b.Day AND a.Time = b.Time; ";
 		$do_it = $database->query($check_Timecod);
-		$row = $do_it->fetch(PDO::FETCH_BOTH);
-		$DDD = $row['Day'];
-		$TTT = $row['Time'];
-		$check_TimeS = "SELECT Day,Time FROM time JOIN class ON class.Code = time.Code WHERE Person_id = '$ac' AND Time IN ( SELECT Time FROM time WHERE class.Code = '$cod') AND Day IN ( SELECT Day FROM time WHERE class.Code = '$cod')";
-		// $check_TimeS = "SELECT class.Code,Day,Time FROM time JOIN class ON class.Code = time.Code JOIN class_detail ON class.Code = class_detail.Code WHERE Person_id = '$ac' HAVING Day = '$DDD' and Time = $TTT ;";
-		$do = $database->query($check_TimeS);
-		$row = $do->fetch(PDO::FETCH_BOTH);
+		$row = $do_it->fetchALl(PDO::FETCH_BOTH);
 		if(empty($row)){
 			return True;
 		}else{
@@ -40,9 +35,9 @@
 		}
 	}
 	function allow_add($database,$cod,$ac){
-		$check_TotalS = "SELECT SUM(Credit) FROM class_detail JOIN class ON class.Code = class_detail.Code WHERE Person_id = '$ac'; ";
+		$check_TotalS = "SELECT Credit FROM student WHERE Student_id = '$ac';";
 		$get_total = $database->query($check_TotalS);
-		$total = $get_total->fetch(PDO::FETCH_ASSOC)['SUM(Credit)'];
+		$total = $get_total->fetch(PDO::FETCH_ASSOC)['Credit'];
 		$check_creditS = "SELECT Credit FROM class_detail WHERE Code ='$cod';";
 		$get_credit = $database->query($check_creditS);
 		$credit = $get_credit->fetch(PDO::FETCH_ASSOC)['Credit'];
@@ -55,8 +50,10 @@
 		}else{
 			$add_sql = "INSERT INTO class(Code,Person_id) VALUES ('$cod','$ac');";
 			$add_class_sql = "UPDATE class_detail SET Nownum = Nownum + 1 WHERE Code='$cod';";
+			$add_studentT_sql = "UPDATE student SET Credit = Credit + $credit WHERE Person_id = '$ac';";
 			$row = $database->query($add_sql);
 			$row = $database->query($add_class_sql);
+			$row = $database->query($add_studentT_sql);
 			print<<<_END
 					<script>
 					alert ("加選成功");
@@ -93,15 +90,16 @@
 					_END;
 				}
 			}else{
-				print<<<_END
-				<script>
-				alert ("已曾經加選過");
-				</script>
-				_END;
-			}
+					print<<<_END
+					<script>
+					alert ("已曾經加選過");
+					</script>
+					_END;
+			}	
 		}catch(PDOException $e){
 		print " Could't create table" . $e->getMessage();
 	}
+	$db = null;
 	header("refresh:0;url=welcome.php");
 	}
 ?>

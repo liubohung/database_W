@@ -67,23 +67,23 @@
 		$db = new PDO('mysql:host=localhost;dbname=class_database',$connect_un,$connect_pw);
 		$cdata = $db->query($ALLHELD);
 		$rows = $cdata->fetchAll(PDO::FETCH_ASSOC);
-		$db = null;
 		print "<div style=\"text-align:center;\"><H3> 已選課表 </H3></div><br> ";
 		print " <table width=\"700\" border=\"1\" align=\"center\"> ";
 		print "<tr> <td> 開課班級 </td> <td> 課程名稱 </td> <td> 選課代號 </td> <td> 學分數 </td> <td> 必選修 </td> <td> 開課單位 </td> <td>已收授人數 </td> <td> 開課人數  </td> <td> 授課教師 </td> </tr>" ;
-		$Tcredit = 0;
 		foreach($rows as $row){
 			print "<tr> ";
 			foreach($row as $key => $value){
 				print "<td>  $value  </td>";
-				if($key == 'Credit'){
-					$Tcredit +=  $value;
-				}
 			}
 			print " </tr>";
 		}
 		print "</table><br>";
-		print "<h3> 目前學分 $Tcredit </h3>"
+
+		$credit_T = "SELECT Credit FROM student WHERE Student_id = '$account' ;";
+		$data_t = $db->query($credit_T);
+		$C_T_data = $data_t->fetch(PDO::FETCH_BOTH);
+		print "<h3> 目前學分 $C_T_data[Credit] </h3>";
+		$db = null;
 	?>
 	<br>
 
