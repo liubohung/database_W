@@ -34,7 +34,7 @@
 			if(isset( $_SESSION['account'])){
 				$account = $_SESSION['account'];
 			}else{
-				header("refresh:0;url=Home.html");
+				header("refresh:0;url=Home.php");
 			}
 			print "<h1> 歡迎$account </h1><br>";
 		?>
@@ -42,7 +42,7 @@
 	<nav class="navbar navbar-light navbar-static-top"> 
  		<div class="container">   
  			<div class="navbar-header">    
-    			<a class="navbar-brand" href="Home.html">首頁</a>   
+    			<a class="navbar-brand" href="Home.php">首頁</a>   
  			</div>   
   			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
    				<ul class="nav navbar-nav navbar-right">

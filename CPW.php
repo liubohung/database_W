@@ -27,8 +27,7 @@
 					</script>
 				_END;
 		}
-
 	}else{
-		header("refresh:0;url=Home.html");
+		header("refresh:0;url=Home.php");
 	}
 ?>

@@ -18,6 +18,11 @@
 	</style>
 </head>
 <body> 
+	<header>
+		<h1>選課系統</H1>
+		<br>
+	</header>
+<body>
 <?php
 	session_start();
 	if(isset( $_SESSION['account'] ) and isset( $_SESSION['pwd'] ) ){
@@ -83,13 +88,5 @@
 		_END;
 	}
 ?>
-		<h3>歡迎查詢</h3>
-		<div style="text-align:center";>
-			<form action="searchresult.php" method="post" class="fromcss">
-					<p>課程查詢<br> <input class="inputcss" type="text" name="search_class"></p>
-					<br>
-					<input type="submit" name="value">
-			</form>
-		</div>
 </body>
 </html>
