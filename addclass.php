@@ -24,7 +24,6 @@
 		}	
 	}
 	function same_time($database,$cod,$ac){
-		//SELECT time.Day,time.Time FROM time JOIN class on time.Code = class.Code WHERE class.Person_id = 'D0752912'; 查詢所有課程
 		$check_Timecod = "SELECT * FROM (SELECT Day,Time FROM time WHERE Code = '$cod') a INNER JOIN (SELECT time.Day,time.Time FROM time JOIN class on time.Code = class.Code WHERE class.Person_id = '$ac') b WHERE a.Day = b.Day AND a.Time = b.Time; ";
 		$do_it = $database->query($check_Timecod);
 		$row = $do_it->fetchALl(PDO::FETCH_BOTH);

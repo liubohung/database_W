@@ -31,7 +31,11 @@
 	<header>
 		<?php
 			session_start();
-			$account = $_SESSION['account'] ;
+			if(isset( $_SESSION['account'])){
+				$account = $_SESSION['account'];
+			}else{
+				header("refresh:0;url=Home.html");
+			}
 			print "<h1> 歡迎$account </h1><br>";
 		?>
 	</header>

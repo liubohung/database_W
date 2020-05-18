@@ -18,16 +18,7 @@
 			}else {
 				$cpwd=$db->query("SELECT Password FROM student WHERE Student_id = '$account';");
 				$row2=$cpwd->fetch(PDO::FETCH_BOTH);
-				if($row2[0] == $pwd){
-					$db=null;
-					session_start();
-					$_SESSION['account'] = $account;
-					$_SESSION['pwd'] = $pwd;
-					header("refresh:0;url=welcome.php");
-					exit;
-				}
-
-				if(! password_verify( $pwd ,$row2[0])){
+				if(!password_verify( $pwd ,$row2[0])){
 					$db=null;
 					print<<<_END
 					<script>
