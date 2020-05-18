@@ -5,6 +5,7 @@
 		require_once("conect.php");
 		$ps1 = $_POST['change'];
 		$ps2 = $_POST['check'];
+		
 		if( $ps1 == $ps2 ){
 			$pwd_h = password_hash($ps1, PASSWORD_DEFAULT);
 			$change_spw_sql = "UPDATE student SET Password = '$pwd_h' WHERE Student_id = '$ac';";
