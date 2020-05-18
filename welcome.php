@@ -47,7 +47,7 @@
   			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
    				<ul class="nav navbar-nav navbar-right">
    					<li> 
-   						<a href="search.html" aria-haspopup="true" role="button">課程查詢</a>
+   						<a href="search.php" aria-haspopup="true" role="button">課程查詢</a>
    					</li>
                     <li> 
                         <a href="#" aria-haspopup="true" role="button">選課情況</a>
