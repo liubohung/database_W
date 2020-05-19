@@ -3,20 +3,25 @@
 <head>
 </head>
 <?php 
+	function research(){
+		print<<<_END
+			<script>
+			alert ("請重新查詢");
+			setTimeout(function(){window.location.href='search.php';},1000);
+			</script>
+		_END;
+	}
 	require_once("conect.php");
 	if ( isset($_POST['search_class'] )) {
-		$code = $_POST['search_class'];
-		$db = new PDO('mysql:host=localhost;dbname=class_database',$connect_un,$connect_pw);
-		$cusr = $db->query("SELECT * FROM db_table_course WHERE 選課代號 = '$code'; ");
-		$row = $cusr->fetch(PDO::FETCH_BOTH);
-		if(empty($row[0])){
-				$dbh=null;
-				print<<<_END
-				<script>
-					alert ("不存在此課程請重新查詢");
-					setTimeout(function(){window.location.href='Home.php';},1000);
-				</script>
-				_END;
+		$code = intval( $_POST['search_class'] );
+		if($code == 0){
+			 research();
+		}else{
+			$db = new PDO('mysql:host=localhost;dbname=class_database',$connect_un,$connect_pw);
+			$cusr = $db->query("SELECT * FROM db_table_course WHERE 選課代號 = '$code'; ");
+			$row = $cusr->fetch(PDO::FETCH_BOTH);
+			if(empty($row[0])){
+				research();
 			} else {
 				$good = array('開課班級','課程名稱','選課代號','學分數','必選修	','開課單位','開課人數','已收授人數','授課教師');
 				print "<div style=\"text-align:center\";>";
@@ -31,13 +36,9 @@
 				print "<input type=\"button\" value=\"返回查詢\" onclick=\"location.href='search.php'\"> ";
 				print "</div>";
 			}
+		}
 	}else{
-		print<<<_END
-				<script>
-				alert ("請重新查詢");
-				setTimeout(function(){window.location.href='Home.php';},1000);
-				</script>
-				_END;
+		research();
 	}
 ?>
 </body>

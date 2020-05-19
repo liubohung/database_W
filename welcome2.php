@@ -11,7 +11,7 @@
 			background-color: #eaf3db; 
 		}
 		.fromcss {
-			line-height: 24px;　　　          　/* 設定文字行距 */
+			line-height: 24px;
     		letter-spacing: 3px;
 			line-height: 1.5em;
 			font-size:150%; 
