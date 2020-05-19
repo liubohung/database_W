@@ -11,7 +11,7 @@
 			</script>
 		_END;
 	}
-	require_once("conect.php");
+	require_once("Noname.php");
 	if ( isset($_POST['search_class'] )) {
 		$code = intval( $_POST['search_class'] );
 		if($code == 0){
