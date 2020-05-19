@@ -65,7 +65,15 @@
 	session_start();
 	$account = $_SESSION['account'] ;
 	if ( isset($account) && isset($_POST['addchoose'])) {
-		$code = $_POST['addchoose'] ;
+
+		$code = intval($_POST['addchoose']);
+		if($code == 0){
+			print<<<_END
+					<script>
+					alert ("選課有誤");
+					</script>
+					_END;
+		}else{
 		try{
 			$add = "INSERT INTO class(Code,Person_id) VALUES ('$code','$account');";
 			$db = new PDO('mysql:host=localhost;dbname=class_database',$connect_un,$connect_pw);
@@ -97,6 +105,7 @@
 			}	
 		}catch(PDOException $e){
 		print " Could't create table" . $e->getMessage();
+		}
 	}
 	$db = null;
 	header("refresh:0;url=welcome.php");
