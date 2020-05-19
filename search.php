@@ -45,7 +45,7 @@
 								<span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a href="logout.php">用戶登出</a></li>
-								<li><a href="chpassword.html">更改密碼</a></li> 
+								<li><a href="chpwd.php">更改密碼</a></li> 
 							</ul>
 						</li>
 					</ul>
