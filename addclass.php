@@ -65,7 +65,6 @@
 	session_start();
 	$account = $_SESSION['account'] ;
 	if ( isset($account) && isset($_POST['addchoose'])) {
-
 		$code = intval($_POST['addchoose']);
 		if($code == 0){
 			print<<<_END
@@ -75,7 +74,6 @@
 					_END;
 		}else{
 		try{
-			$add = "INSERT INTO class(Code,Person_id) VALUES ('$code','$account');";
 			$db = new PDO('mysql:host=localhost;dbname=class_database',$connect_un,$connect_pw);
 			if( check_sec($db,$code,$account) ){
 				if( check_total($db,$code) ){
