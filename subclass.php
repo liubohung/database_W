@@ -47,6 +47,10 @@
 		}
 	}
 	$db = null;
-	header("refresh:0;url=welcome2.php");
+	if ($_SERVER['HTTP_REFERER'] == "http://127.0.0.1/database_W/welcome2.php"){
+		header("refresh:0;url=welcome2.php");
+	}else{
+		header("refresh:0;url=welcome.php");
+	}
 	}
 ?>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>search</title>
+	<link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist\css\bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>     
+	<script src="bootstrap-3.3.7-dist\js/bootstrap.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+	<style type="text/css">
+		div.ui-dialog-content{
+			font-size : 30px;
+			font-family: georgia;
+			font-style : italic;
+		}
+	</style>
+</head>
+<body>
+	<div id="dialog" title="windows">
+		<p> Content</p>
+	</div>
+	<script>
+		$("#dialog").dialog({
+      		autoOpen:true ,
+      	show: {
+        	effect: "puff",
+        	duration: 1000
+    	},
+      	hide: {
+        	effect: "slide",
+        	duration: 100
+      	}
+    });
+	</script>
+</body>

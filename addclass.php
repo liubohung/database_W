@@ -47,12 +47,13 @@
 					</script>
 					_END;
 		}else{
-			$add_sql = "INSERT INTO class(Code,Person_id) VALUES ('$cod','$ac');";
-			$add_class_sql = "UPDATE class_detail SET Nownum = Nownum + 1 WHERE Code='$cod';";
-			$add_studentT_sql = "UPDATE student SET Credit = Credit + $credit WHERE Person_id = '$ac';";
-			$row = $database->query($add_sql);
-			$row = $database->query($add_class_sql);
-			$row = $database->query($add_studentT_sql);
+			$add_class_sql_T ="
+			BEGIN;
+			INSERT INTO class(Code,Person_id) VALUES ($cod,\"$ac\");
+			UPDATE class_detail SET Nownum = Nownum + 1 WHERE Code = $cod ;
+			UPDATE student SET Credit = Credit + $credit WHERE Student_id = \"$ac\";
+			COMMIT;" ;
+			$row = $database->query($add_class_sql_T);
 			print<<<_END
 					<script>
 					alert ("加選成功");
@@ -106,6 +107,10 @@
 		}
 	}
 	$db = null;
-	header("refresh:0;url=welcome.php");
+	if ($_SERVER['HTTP_REFERER'] == "http://127.0.0.1/database_W/welcome2.php"){
+		header("refresh:0;url=welcome2.php");
+	}else{
+		header("refresh:0;url=welcome.php");
+	}
 	}
 ?>

@@ -84,7 +84,7 @@
 	}
 ?>
 		<h3>歡迎查詢</h3>
-		<div style="text-align:center";>
+		<div style="text-align:center" >
 			<form action="searchresult.php" method="post" class="fromcss">
 					<p>課程查詢<br> <input class="inputcss" type="text" name="search_class"></p>
 					<br>
