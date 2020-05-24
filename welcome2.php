@@ -96,7 +96,7 @@
 			14=>array('零' => "<td><div style=\"text-align:center;\">21:00 - 22:00</div></td>",'一'=>$N_C_E,'二'=>$N_C_E,'三'=>$N_C_E,'四' =>$N_C_E,'五' =>$N_C_E,'六' =>$N_C_E,'七' => $N_C_E)
 		);
 		foreach($rows as $row){
-			$list[$row['Time']][$row['Day']] = "<td width="10%"><div style=\"text-align:center;\">" . $row['Name'] ."</div><div style=\"text-align:center;\">".$row['Code']. "</div></td> ";
+			$list[$row['Time']][$row['Day']] = "<td width=\"10%\"><div style=\"text-align:center;\">" . $row['Name'] ."</div><div style=\"text-align:center;\">".$row['Code']. "</div></td> ";
 		}
 		print "<div style=\"text-align:center;\"><H3> 已選課表 </H3></div><br> ";
 		print " <table style=\"width:80%;\" border=\"1\" align=\"center\">";
