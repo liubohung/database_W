@@ -89,9 +89,9 @@
         <div style="float:left;width: 50%;height: 50%;">
             <p>系別：</p>
             <select id="department" onclick="renew(this.selectedIndex);">
-                <option value="企業管理系">企業管理系</option>
-                <option value="通識">通識</option>
-                <option value="資訊工程系">資訊工程系</option>
+                <option value="企業管理學系">企業管理系</option>
+                <option value="通識核心課程">通識</option>
+                <option value="資訊工程學系">資訊工程系</option>
             </select>
         </div>
         <div style="float:right;width: 50%;height: 50%;">
@@ -109,7 +109,7 @@ $(document).ready(function(){
         console.log("wssss");
         $.ajax({
             type: "POST",
-            url: "getclass.php",
+            url: "http://127.0.0.1/database_W/ajax/getclass.php",
             dataType: "html",
             data: {
                 Class: $("#member").val(),
@@ -120,7 +120,9 @@ $(document).ready(function(){
             },
             success: function(data)
             {
-            $("#myDiv").html(htmlobj.responseText);
+            alert('good');
+            console.log(JSON.stringify(data));
+            // $("#myDiv").html(htmlobj.responseText);
             }
          });
     });
