@@ -2,10 +2,11 @@
 <html>
 <head>
 	<meta charset="utf-8">
+
 	<title>searchtry</title>
 	<link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist\css\bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>     
-	<script src="bootstrap-3.3.7-dist\js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>     
+    <script src="bootstrap-3.3.7-dist\js/bootstrap.min.js"></script>
 	<style type="text/css">
 		body{
 			background-color: #eaf3db; 
@@ -87,7 +88,7 @@
         </fieldset>
         <div style="float:left;width: 50%;height: 50%;">
             <p>系別：</p>
-            <select name="department" onclick="renew(this.selectedIndex);">
+            <select id="department" onclick="renew(this.selectedIndex);">
                 <option value="企業管理系">企業管理系</option>
                 <option value="通識">通識</option>
                 <option value="資訊工程系">資訊工程系</option>
@@ -95,19 +96,29 @@
         </div>
         <div style="float:right;width: 50%;height: 50%;">
             <p>班級：</p>
-            <select name="member">
+            <select id="member">
                 <option value="">請由左方選取系別</option>
             </select>
         <input type="submit" value="Search">
         </div>
     </form>
+    <button id="submitExample">dddd</button>
     <script>
 $(document).ready(function(){
-  $("input").click(function(){
-    $.post("/example/jquery/demo_test_post.asp",
-    {
-      name:"Donald Duck",
-      city:"Duckburg"
+  $("#submitExample").click(function(){
+    $.ajax({
+           type: "POST",
+           url: url,
+            dataType: "json",
+           data: form.serialize(), // serializes the form's elements.
+           success: function(data)
+           {
+               alert(data); // show response from the php script.
+           }
+         });
+    $.post("ajax/x.php",{
+      Class: $("#member").val(),
+      Collage: $("#department").val()
     },
     function(data,status){
       alert("数据：" + data + "\n状态：" + status);
