@@ -72,12 +72,12 @@
 		$cdata = $db->query($ALLHELD);
 		$rows = $cdata->fetchAll(PDO::FETCH_ASSOC);
 		print "<div style=\"text-align:center;\"><H3> 已選課表 </H3></div><br> ";
-		print " <table width=\"700\" border=\"1\" align=\"center\"> ";
-		print "<tr> <td> 開課班級 </td> <td> 課程名稱 </td> <td> 選課代號 </td> <td> 學分數 </td> <td> 必選修 </td> <td> 開課單位 </td> <td>已收授人數 </td> <td> 開課人數  </td> <td> 授課教師 </td> </tr>" ;
+		print " <table style=\"width:80%;\" border=\"1\" align=\"center\">";
+		print "<thead><tr style=\"height:40px\"> <th><div style=\"text-align:center;\">開課班級</div></th> <th><div style=\"text-align:center;\">課程名稱</div></th> <th><div style=\"text-align:center;\">選課代號</div></th><th><div style=\"text-align:center;\">學分數</div></th> <th><div style=\"text-align:center;\">必選修</div></th><th><div style=\"text-align:center;\">開課單位</div></th> <th><div style=\"text-align:center;\">收授人數</div></th> <th><div style=\"text-align:center;\">開課人數</div></th> <th><div style=\"text-align:center;\">授課教師</div></th> </tr></thead>" ;
 		foreach($rows as $row){
-			print "<tr> ";
+			print "<tr style=\"height:40px\">";
 			foreach($row as $key => $value){
-				print "<td>  $value  </td>";
+				print "<td><div style=\"text-align:center;\"> $value </div></td>";
 			}
 			print " </tr>";
 		}
@@ -97,7 +97,7 @@
    				if (confirm("是否確定退選") ) {
 	    			document.subclass.submit();
 				} else {
-					setTimeout(function(){window.location.href='welcome2.php';},1000);
+					setTimeout(function(){window.location.href='welcome.php';},1000);
 				}
     	})
 	})	

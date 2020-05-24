@@ -47,9 +47,10 @@
 				</div>
 			</div>
 		</nav>
-		<script>
+
+<script>
         department = new Array();
-        department[0] = [ 0:"企管一甲", 1:"企管一乙", "企管二甲", "企管二乙", "企管三甲", "企管三乙", "企管四甲", "企管四乙", "企管碩一", "企管碩二"]; //企管系
+        department[0] = ["企管一甲", "企管一乙", "企管二甲", "企管二乙", "企管三甲", "企管三乙", "企管四甲", "企管四乙", "企管碩一", "企管碩二"]; //企管系
         department[1] = ["通識－社會整合(SB)", "通識－社會", "通識－社會(夜)", "通識－人文", "通識－人文(夜)", "通識－自然", "通識－自然(夜)", "通識－統合", "通識－統合(夜)"];	//通識課
         department[2] = ["資訊一甲", "資訊一乙", "資訊一丙", "資訊二甲", "資訊二乙", "資訊二丙", "資訊二丁", "資訊三甲", "資訊三乙", "資訊三丙", "資訊三丁", "資訊碩一", "資訊博一", "資訊博二", "電腦系統學程資訊三", "軟體工程學程資訊三", "網路與資安學程資訊三", "資訊跨域學程資訊三"];	//資訊系
         function renew(index) {
@@ -58,29 +59,62 @@
             document.myForm.member.length = department[index].length;	// 刪除多餘的選項
         }
     </script>
-	<div style="text-align:center">	
-		<form name="myForm" action=".php" method="post">
-        系別：
-        <select name="department" onclick="renew(this.selectedIndex);">
-            <option value=0>企業管理系
-            <option value=1>通識
-            <option value=2>資訊工程系
-        </select>
+    <style type="text/css">
+    	select{
+    		height:20%;
+        	line-height:32px;
+        	font-size:14px;
+        	width:30%;
+        	border-bottom-style:solid;
 
-        班級：
-        <select name="member">
-            <option value="">請由左方選取系別
-        </select>
+        	text-align: center;
+			text-align-last: center;
+        	margin:20px auto;
+    		appearance:none;
+    		-webkit-appearance:none;
+    		-moz-appearance:none;
+    		-ms-appearance:none;
+    		-o-appearance:none;
+    		-khtml-appearance:none;
+    	}
+    </style>
+    <div id="cccc" style="text-align:center">
+    <form name="myForm" action=".php" method="post">
+        <fieldset>
+            <div>
+                <p>學院</p>
+            </div>
+        </fieldset>
+        <div style="float:left;width: 50%;height: 50%;">
+            <p>系別：</p>
+            <select name="department" onclick="renew(this.selectedIndex);">
+                <option value="企業管理系">企業管理系</option>
+                <option value="通識">通識</option>
+                <option value="資訊工程系">資訊工程系</option>
+            </select>
+        </div>
+        <div style="float:right;width: 50%;height: 50%;">
+            <p>班級：</p>
+            <select name="member">
+                <option value="">請由左方選取系別</option>
+            </select>
         <input type="submit" value="Search">
+        </div>
     </form>
-	<form>
-		<select name="travel-form">
-			<option value="Japan ">日本</option>
-			<option value="Korea">韓國</option>
-			<option value="Europe ">歐洲</option>
-			<option value="China ">大陸</option>
-		</select>
-	</form>
+    <script>
+$(document).ready(function(){
+  $("input").click(function(){
+    $.post("/example/jquery/demo_test_post.asp",
+    {
+      name:"Donald Duck",
+      city:"Duckburg"
+    },
+    function(data,status){
+      alert("数据：" + data + "\n状态：" + status);
+    });
+  });
+});
+</script>
 </div>
 </body>
 </html>
