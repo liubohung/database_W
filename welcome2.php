@@ -79,7 +79,7 @@
 		$N_C_E = "<td style=\"height:70px\"> </td>";
 		$S_TDL_E = "<td width=$tdlong>  </td>";
 		$list = array(
-			0=>array('零'=>"<td width= $tdlong>  </td>" ,'一'=>"<td> 星期一 </td> ",'二'=>" <td> 星期二 </td> ",'三'=>"<td> 星期三 </td>",'四' =>"<td> 星期四 </td>",'五' =>"<td> 星期五 </td>",'六' =>"<td> 星期六 </td>",'七' =>"<td> 星期天 </td>" ),
+			0=>array('零'=>"<td width= $tdlong>  </td>" ,'一'=>"<td><div style=\"text-align:center;\"> 星期一 <div> </td> ",'二'=>" <td><div style=\"text-align:center;\"> 星期二 <div> </td> ",'三'=>"<td><div style=\"text-align:center;\"> 星期三 <div> </td>",'四' =>"<td><div style=\"text-align:center;\"> 星期四 <div> </td>",'五' =>"<td><div style=\"text-align:center;\"> 星期五 <div> </td>",'六' =>"<td><div style=\"text-align:center;\"> 星期六 <div> </td>",'七' =>"<td><div style=\"text-align:center;\"> 星期天 <div> </td>" ),
 			1=>array('零' => "<td>8:00 - 9:00</td>",'一'=>"<td width=$tdlong >  </td>",'二'=>"<td width=$tdlong >  </td>",'三'=>"<td width=$tdlong >  </td>",'四' =>"<td width=$tdlong >  </td>",'五' =>"<td width=$tdlong>  </td>",'六' =>"<td width=$tdlong >  </td>",'七' => "<td width=$tdlong >  </td>"),
 			2=>array('零' => "<td>9:00 - 10:00</td>",'一' => $N_C_E,'二'=>$N_C_E,'三'=>$N_C_E,'四' =>$N_C_E,'五' =>$N_C_E,'六' =>$N_C_E,'七' => $N_C_E),
 			3=>array('零' => "<td>10:00 - 11:00</td>",'一'=>$N_C_E,'二'=>$N_C_E,'三'=>$N_C_E,'四' =>$N_C_E,'五' =>$N_C_E,'六' =>$N_C_E,'七' => $N_C_E),
@@ -103,7 +103,7 @@
 		foreach ($list as $row) {
 			print "<tr style=\"height:70px\">";
 			foreach ($row as $key => $value){
-				print $value;
+				print "<div style=\"text-align:center;\">" . $value . "/div";
 			}
 			print "</tr>";
 		}
