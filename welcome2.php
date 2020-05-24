@@ -99,9 +99,9 @@
 			$list[$row['Time']][$row['Day']] = "<td width=$tdlong >" . $row['Name'] ."<br>".$row['Code']. " </td> ";
 		}
 		print "<div style=\"text-align:center;\"><H3> 已選課表 </H3></div><br> ";
-		print " <table style=\"line-height:25px;\" border=\"1\" align=\"center\">";
+		print " <table style=\"width:60%;\" border=\"1\" align=\"center\">";
 		foreach ($list as $row) {
-			print "<tr>";
+			print "<tr style=\"height:50px\">";
 			foreach ($row as $key => $value){
 				print $value;
 			}
