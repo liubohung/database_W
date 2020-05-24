@@ -52,7 +52,7 @@
 <script>
         department = new Array();
         department[0] = ["企管一甲", "企管一乙", "企管二甲", "企管二乙", "企管三甲", "企管三乙", "企管四甲", "企管四乙", "企管碩一", "企管碩二"]; //企管系
-        department[1] = ["通識－社會整合(SB)", "通識－社會", "通識－社會(夜)", "通識－人文", "通識－人文(夜)", "通識－自然", "通識－自然(夜)", "通識－統合", "通識－統合(夜)"];	//通識課
+        department[1] = ["通識－社會整合(SB)", "通識－社會(S)", "通識－社會(夜)(S)", "通識－人文(H)", "通識－人文(夜)(H)", "通識－自然(N)", "通識－自然(夜)(N)", "通識－統合(M)", "通識－統合(夜)(M)"];	//通識課
         department[2] = ["資訊一甲", "資訊一乙", "資訊一丙", "資訊二甲", "資訊二乙", "資訊二丙", "資訊二丁", "資訊三甲", "資訊三乙", "資訊三丙", "資訊三丁", "資訊碩一", "資訊博一", "資訊博二", "電腦系統學程資訊三", "軟體工程學程資訊三", "網路與資安學程資訊三", "資訊跨域學程資訊三"];	//資訊系
         function renew(index) {
             for (var i = 0; i < department[index].length; i++)
@@ -101,16 +101,18 @@
             </select>
         <input type="button" id="button" value="Search">
         </div>
-        <table id="mydiv"></table>
+        <table id="mydiv" border="1"><tbody id ="mytbody"></tbody></table>
     </form>
     <script>
 $(document).ready(function(){
     $("#button").click(function(){
-        console.log("wssss");
+        $("#mytbody").empty();
+        var hst = "<td><div style=\"text-align:center;\">開課班級</div></td>s <td><div style=\"text-align:center;\"> 課程名稱</div></td>s <td><div style=\"text-align:center;\">選課代號</div></td>s <td><div style=\"text-align:center;\">學分數</div></td>s <td><div style=\"text-align:center;\">必選修</div></td>s <td><div style=\"text-align:center;\">開課單位</div></td>s <td><div style=\"text-align:center;\">開課人數</div></td>s <td><div style=\"text-align:center;\">已收授人數</div></td>s <td><div style=\"text-align:center;\">授課教師</div></td>s ";
+             $("#mytbody").append(hst);
         $.ajax({
             type: "POST",
             url: "getclass.php",
-            dataType: "json",
+            dataType: "html",
             data: {
                 Class: $("#member").val(),
                 Collage: $("#department").val()
@@ -118,21 +120,25 @@ $(document).ready(function(){
             error: function(xhr) {
                 alert('Ajax request 發生錯誤');
             },
-            success: function(data){
-                let aa = Object.keys(data).map(key => data[key]);
-                console.log(aa[0].length());
-                // console.log(data[0].Name);
-                // var aa = JSON.parse(data);
-                // console.log(aa);
-                // for(var item in data){
-                //     var dii = "<td><div style=\"text-align:center;\">";
-                //     var eddi = "</div></td>";
-                //     var str="<tbody>";
-                //     str+="<tr>" + dii +item.Class+ eddi;
-                //     str+= dii +item.Name+ eddi;
-                //     str+="<tbody>"
-                //     $("#mydiv").append(str);
-                // }
+
+            success: function(msg){
+                var array_return =  $.parseJSON ( msg );
+                console.log(array_return[0].Name);
+                for(var i=0 ;i<msg.length;i++){
+                    var dii = "<td><div style=\"text-align:center;\">";
+                    var eddi = "</div></td>";
+                    var str="";
+                    str+="<tr>" + dii + array_return[i].Class + eddi;
+                    str+= dii + array_return[i].Name + eddi;
+                    str+= dii + array_return[i].Code + eddi;
+                    str+= dii + array_return[i].Credit + eddi;
+                    str+= dii + array_return[i].Haveto + eddi;
+                    str+= dii + array_return[i].College + eddi;
+                    str+= dii + array_return[i].Totalnum + eddi;
+                    str+= dii + array_return[i].Nownum + eddi;
+                    str+= dii + array_return[i].Teacher_Name + eddi+"</tr>";
+                    $("#mytbody").append(str);
+                }
             }
          });
     });
