@@ -118,11 +118,18 @@ $(document).ready(function(){
             error: function(xhr) {
                 alert('Ajax request 發生錯誤');
             },
-            success: function(data)
-            {
-            alert('good');
-            console.log(JSON.stringify(data));
-            // $("#myDiv").html(htmlobj.responseText);
+            success: function(data){
+                var head_T = "<thead><tr style=\"height:40px\"> <th><div style=\"text-align:center;\">開課班級</div></th> <th><div style=\"text-align:center;\">課程名稱</div></th> <th><div style=\"text-align:center;\">選課代號</div></th><th><div style=\"text-align:center;\">學分數</div></th> <th><div style=\"text-align:center;\">必選修</div></th><th><div style=\"text-align:center;\">開課單位</div></th> <th><div style=\"text-align:center;\">收授人數</div></th> <th><div style=\"text-align:center;\">開課人數</div></th> <th><div style=\"text-align:center;\">授課教師</div></th> </tr></thead>";
+                var str="<tbody><tr>";
+
+                $.each(data,function(i,items){     
+                    str+="<td><div style=\"text-align:center;\">"+items.class+"</div></td>";
+                    str+="<li>"+"姓名："+items.name+"</li>"; 
+                });                 
+                str+="</ul>";      
+                $("#myDiv").append(str); 
+                alert('good');
+                console.log(JSON.stringify(data));
             }
          });
     });
