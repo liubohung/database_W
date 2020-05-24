@@ -78,9 +78,9 @@
 		$tdlong = "\"80\"";
 		$N_C_E = "<td style=\"height:70px\"> </td>";
 		$S_TDL_E = "<td width=$tdlong>  </td>";
-		$T_H = array('零'=>"<th width= $tdlong>  </th>" ,'一'=>"<th> 星期一 </th> ",'二'=>" <th> 星期二 </th> ",'三'=>"<th> 星期三 </th>",'四' =>"<th> 星期四 </th>",'五' =>"<th> 星期五 </th>",'六' =>"<th> 星期六 </th>",'七' =>"<th> 星期天 </th>" ),
 		$list = array(
-			1=>array('零' => "<td>9:00 - 10:00</td>",'一' => $N_C_E,'二'=>$N_C_E,'三'=>$N_C_E,'四' =>$N_C_E,'五' =>$N_C_E,'六' =>$N_C_E,'七' => $N_C_E),
+			0=>array('零'=>"<td width= $tdlong>  </td>" ,'一'=>"<td> 星期一 </td> ",'二'=>" <td> 星期二 </td> ",'三'=>"<td> 星期三 </td>",'四' =>"<td> 星期四 </td>",'五' =>"<td> 星期五 </td>",'六' =>"<td> 星期六 </td>",'七' =>"<td> 星期天 </td>" ),
+			1=>array('零' => "<td>8:00 - 9:00</td>",'一'=>"<td width=$tdlong >  </td>",'二'=>"<td width=$tdlong >  </td>",'三'=>"<td width=$tdlong >  </td>",'四' =>"<td width=$tdlong >  </td>",'五' =>"<td width=$tdlong>  </td>",'六' =>"<td width=$tdlong >  </td>",'七' => "<td width=$tdlong >  </td>"),
 			2=>array('零' => "<td>9:00 - 10:00</td>",'一' => $N_C_E,'二'=>$N_C_E,'三'=>$N_C_E,'四' =>$N_C_E,'五' =>$N_C_E,'六' =>$N_C_E,'七' => $N_C_E),
 			3=>array('零' => "<td>10:00 - 11:00</td>",'一'=>$N_C_E,'二'=>$N_C_E,'三'=>$N_C_E,'四' =>$N_C_E,'五' =>$N_C_E,'六' =>$N_C_E,'七' => $N_C_E),
 			4=>array('零' => "<td>11:00 - 12:00</td>",'一'=>$N_C_E,'二'=>$N_C_E,'三'=>$N_C_E,'四' =>$N_C_E,'五' =>$N_C_E,'六' =>$N_C_E,'七' => $N_C_E),
@@ -99,12 +99,7 @@
 			$list[$row['Time']][$row['Day']] = "<td width=$tdlong >" . $row['Name'] ."<br>".$row['Code']. " </td> ";
 		}
 		print "<div style=\"text-align:center;\"><H3> 已選課表 </H3></div><br> ";
-		print " <table style=\"width:80;\" border=\"1\" align=\"center\">";
-		print "<thead><tr>";
-		foreach ($T_H as $key => $value) {
-			print $value;
-		}
-		print "</tr></thead><tbody>";
+		print " <table style=\"width:80%;\" border=\"1\" align=\"center\">";
 		foreach ($list as $row) {
 			print "<tr style=\"height:70px\">";
 			foreach ($row as $key => $value){
@@ -112,7 +107,7 @@
 			}
 			print "</tr>";
 		}
-		print "</tbody></table><br>";
+		print "</table><br>";
 		$credit_T = "SELECT Credit FROM student WHERE Student_id = '$account' ;";
 		$data_t = $db->query($credit_T);
 		$C_T_data = $data_t->fetch(PDO::FETCH_BOTH);
