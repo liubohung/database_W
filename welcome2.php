@@ -75,7 +75,7 @@
 		$db = new PDO('mysql:host=localhost;dbname=class_database',$connect_un,$connect_pw);
 		$cdata = $db->query($HELD);
 		$rows = $cdata->fetchAll(PDO::FETCH_ASSOC);
-		$tdlong = "\"80\"";
+		$tdlong = "\"10%\"";
 		$N_C_E = "<td style=\"height:70px\"> </td>";
 		$S_TDL_E = "<td width=$tdlong>  </td>";
 		$list = array(
