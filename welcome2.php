@@ -76,8 +76,8 @@
 		$cdata = $db->query($HELD);
 		$rows = $cdata->fetchAll(PDO::FETCH_ASSOC);
 		$tdlong = "\"80\"";
-		$N_C_E = "<td> </td>";
-		$S_TDL_E = "<td width= $tdlong>  </td>";
+		$N_C_E = "<td style=\"height:70px\"> </td>";
+		$S_TDL_E = "<td width=$tdlong>  </td>";
 		$list = array(
 			0=>array('零'=>"<td width= $tdlong>  </td>" ,'一'=>"<td> 星期一 </td> ",'二'=>" <td> 星期二 </td> ",'三'=>"<td> 星期三 </td>",'四' =>"<td> 星期四 </td>",'五' =>"<td> 星期五 </td>",'六' =>"<td> 星期六 </td>",'七' =>"<td> 星期天 </td>" ),
 			1=>array('零' => "<td width= $tdlong>8:00 - 9:00</td>",'一'=>"<td width=$tdlong >  </td>",'二'=>"<td width=$tdlong >  </td>",'三'=>"<td width=$tdlong >  </td>",'四' =>"<td width=$tdlong >  </td>",'五' =>"<td width=$tdlong>  </td>",'六' =>"<td width=$tdlong >  </td>",'七' => "<td width=$tdlong >  </td>"),
