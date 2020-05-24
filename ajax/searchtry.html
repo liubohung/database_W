@@ -80,7 +80,7 @@
     	}
     </style>
     <div id="cccc" style="text-align:center">
-    <form name="myForm" action=".php" method="post">
+    <form name="myForm">
         <fieldset>
             <div>
                 <p>學院</p>
@@ -99,14 +99,14 @@
             <select id="member">
                 <option value="">請由左方選取系別</option>
             </select>
-        <input type="submit" value="Search">
+        <input type="button" id="button" value="Search">
         </div>
     </form>
     <div id="myDiv"><div>
-    <button id="submitExample">dddd</button>
     <script>
 $(document).ready(function(){
-    $("#submitExample").click(function(){
+    $("#button").click(function(){
+        console.log("wssss");
         $.ajax({
             type: "POST",
             url: "getclass.php",
