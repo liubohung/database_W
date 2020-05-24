@@ -105,6 +105,7 @@
     </div>
     <div style="text-align:center;">
             <table id="mydiv" border="1" align="center"><tbody id ="mytbody"></tbody></table>
+            <div id = "bbb"></div>
     </div>
     <script>
 $(document).ready(function(){
@@ -118,12 +119,11 @@ $(document).ready(function(){
             dataType: "html",
             data: {
                 Class: $("#member").val(),
-                Collage: $("#department").val()
+                Collage: $("#department").val(),
             },
             error: function(xhr) {
                 alert('Ajax request 發生錯誤');
             },
-
             success: function(msg){
                 var array_return =  $.parseJSON ( msg );
                 console.log(array_return[0].Name);
