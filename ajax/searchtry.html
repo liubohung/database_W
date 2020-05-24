@@ -101,8 +101,11 @@
             </select>
         <input type="button" id="button" value="Search">
         </div>
-        <table id="mydiv" border="1"><tbody id ="mytbody"></tbody></table>
     </form>
+    </div>
+    <div style="text-align:center;">
+            <table id="mydiv" border="1" align="center"><tbody id ="mytbody"></tbody></table>
+    </div>
     <script>
 $(document).ready(function(){
     $("#button").click(function(){
@@ -125,7 +128,7 @@ $(document).ready(function(){
                 var array_return =  $.parseJSON ( msg );
                 console.log(array_return[0].Name);
                 for(var i=0 ;i<msg.length;i++){
-                    var dii = "<td><div style=\"text-align:center;\">";
+                    var dii = "<td style=\"height:40px\"><div style=\"text-align:center;\">";
                     var eddi = "</div></td>";
                     var str="";
                     str+="<tr>" + dii + array_return[i].Class + eddi;
