@@ -175,8 +175,8 @@
 				<td width="10%">  </td>
 			</tr>
 			<tr style="height:80px">
-				<td>9:00 - 10:00</td>
-				<td style="padding:2px; width=10%;">
+				<td width=10% >9:00 - 10:00</td>
+				<td width=10% style="padding:2px;">
 					<div id="ccc-1" draggable="true" class="div1" ondragstart="Drag(event)"><p class="name">統計學(二)<br>2152</p></div></td> 
 				<td width="10%">  </td>
 				<td width="10%" style="padding:2px;">
