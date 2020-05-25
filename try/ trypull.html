@@ -72,7 +72,7 @@ function sbDrop(event){
     var data=event.dataTransfer.getData("text");
     event.currentTarget.appendChild(document.getElementById(data));
 
-    if (confirm("是否確定退選") ) {
+    if (confirm("是否確定退選")){
 	    console.log(data);
     	var str = 'div#'+ data+' .name';
     	var subC = ($(str).text().replace(/[^0-9]/ig,""));
@@ -91,9 +91,7 @@ function sbDrop(event){
     		temp.submit();        
     		return temp;        
 		}
-		post("subclass.php",subC);
-		alert("no");
-		history.go(0); 			
+		post("subclass.php",subC);			
 	} else {
 		history.go(0); 
 	}

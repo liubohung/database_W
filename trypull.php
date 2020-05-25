@@ -174,7 +174,7 @@
 			13=>array('零' => "<td><div style=\"text-align:center;\">20:00 - 21:00</div></td>",'一'=>$N_C_E,'二'=>$N_C_E,'三'=>$N_C_E,'四' =>$N_C_E,'五' =>$N_C_E,'六' =>$N_C_E,'七' => $N_C_E),
 			14=>array('零' => "<td><div style=\"text-align:center;\">21:00 - 22:00</div></td>",'一'=>$N_C_E,'二'=>$N_C_E,'三'=>$N_C_E,'四' =>$N_C_E,'五' =>$N_C_E,'六' =>$N_C_E,'七' => $N_C_E)
 		);
-		foreach($rows as $row){<td  width="10%" >
+		foreach($rows as $row){
 			$list[$row['Time']][$row['Day']] = "<td width=\"10%\" style=\"padding:2px;\"><div id=" . $row['Time'] . $row['Day'] . " draggable=\"true\" class=\"div1\" ondragstart=\"Drag(event)\"><p class=\"name\">" . $row['Name'] ."<br>".$row['Code']. "<p></div></td> ";
 		}
 		print "<div style=\"text-align:center;\"><H3> 已選課表 </H3></div><br> ";
@@ -233,7 +233,7 @@
 		</tbody>
 	</table> -->
 	</div>
-	<div id="footer" style="width:100%;height:110px;border:2px black solid;position:absolute;bottom:10px; padding: 1%">
+	<div id="footer" style="width:100%;height:110px;border:2px black solid;position:absolute;bottom:0px; padding: 1%">
 		<div id="aaa-1" draggable="true" class="div2" ondragstart="Drag(event)" ondragexit ="EDrop(event)">
 			<p class="name">系統程式<br>3779</p>
 		</div>
