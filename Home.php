@@ -42,7 +42,14 @@
 							<a href="#" aria-haspopup="true" role="button">選課情況</a>
 						</li>
 						<li> 
-							<a href="welcome.php" aria-haspopup="true" role="button">回到選課</a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">
+								選課模式
+								<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="trypull.php">一般選課</a></li>
+								<li><a href="welcome.php">快速選課</a></li>
+								<li><a href="welcome2.php">課表選課</a></li>  
+							</ul>
 						</li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">
