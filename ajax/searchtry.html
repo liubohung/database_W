@@ -108,8 +108,9 @@
     <script>
 
     $("#button_s").click(function(){
+        $( "#mytbody" ).empty();
         var hst = "<td><div style=\"text-align:center;\">開課班級</div></td>s <td><div style=\"text-align:center;\"> 課程名稱</div></td>s <td><div style=\"text-align:center;\">選課代號</div></td>s <td><div style=\"text-align:center;\">學分數</div></td>s <td><div style=\"text-align:center;\">必選修</div></td>s <td><div style=\"text-align:center;\">開課單位</div></td>s <td><div style=\"text-align:center;\">開課人數</div></td>s <td><div style=\"text-align:center;\">已收授人數</div></td>s <td><div style=\"text-align:center;\">授課教師</div></td>s ";
-             $("#mytbody").append(hst);
+            $("#mytbody").append(hst);
         $.ajax({
             type: "POST",
             url: "getclass.php",
