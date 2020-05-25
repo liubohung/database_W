@@ -64,8 +64,8 @@
 
 	require_once("conect.php");
 	session_start();
-	$account = $_SESSION['account'] ;
-	if ( isset($account) && isset($_POST['addchoose'])) {
+	if (isset($_SESSION['account']) && isset($_POST['addchoose'])) {
+		$account = $_SESSION['account'];
 		$code = intval($_POST['addchoose']);
 		if($code == 0){
 			print<<<_END
