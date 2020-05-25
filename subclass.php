@@ -1,8 +1,8 @@
 <?php
 	require_once("conect.php");
 	session_start();
-	$account = $_SESSION['account'];
-	if ( isset($account) && isset($_POST['subchoose'])) {
+	if ( isset($_SESSION['account']) && isset($_POST['subchoose'])) {
+		$account = $_SESSION['account'];
 		$code = $_POST['subchoose'] ;
 		if($code == 0){
 			print<<<_END
