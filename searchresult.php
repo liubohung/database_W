@@ -23,7 +23,7 @@
 			if(empty($row[0])){
 				research();
 			} else {
-				$good = array('開課班級','課程名稱','選課代號','學分數','必選修	','開課單位','開課人數','已收授人數','授課教師');
+				$good = array('開課班級','課程名稱','選課代號','學分數','必選修','開課單位','開課人數','已收授人數','授課教師');
 				print "<div style=\"text-align:center\";>";
 				print " <table width=\"300\" border=\"0\"> ";
 				for($i =0 ; $i<9; $i++) {
