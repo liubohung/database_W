@@ -72,31 +72,31 @@ function sbDrop(event){
     var data=event.dataTransfer.getData("text");
     event.currentTarget.appendChild(document.getElementById(data));
 
-  //   if (confirm("是否確定退選") ) {
-	 //    console.log(data);
-  //   	var str = 'div#'+ data+' .name';
-  //   	var subC = ($(str).text().replace(/[^0-9]/ig,""));
-  //   	console.log(str);
-  //   	console.log(($(str).text().replace(/[^0-9]/ig,"")));
-  //  		function post(URL, PARAMS) {        
-  //   		var temp = document.createElement("form");        
-  //   		temp.action = URL;        
-  //   		temp.method = "post";        
-  //   		temp.style.display = "none";
-  //   		var opt = document.createElement("input");        
-  //       	opt.name = 'subchoose';        
-  //       	opt.value = PARAMS;
-  //       	temp.appendChild(opt);        
-  //   		document.body.appendChild(temp);        
-  //   		temp.submit();        
-  //   		return temp;        
-		// }
-		// post("subclass.php",subC);
-		// alert("no");
-		// history.go(0); 			
-	// } else {
-	// 	history.go(0); 
-	// }
+    if (confirm("是否確定退選") ) {
+	    console.log(data);
+    	var str = 'div#'+ data+' .name';
+    	var subC = ($(str).text().replace(/[^0-9]/ig,""));
+    	console.log(str);
+    	console.log(($(str).text().replace(/[^0-9]/ig,"")));
+   		function post(URL, PARAMS) {        
+    		var temp = document.createElement("form");        
+    		temp.action = URL;        
+    		temp.method = "post";        
+    		temp.style.display = "none";
+    		var opt = document.createElement("input");        
+        	opt.name = 'subchoose';        
+        	opt.value = PARAMS;
+        	temp.appendChild(opt);        
+    		document.body.appendChild(temp);        
+    		temp.submit();        
+    		return temp;        
+		}
+		post("subclass.php",subC);
+		alert("no");
+		history.go(0); 			
+	} else {
+		history.go(0); 
+	}
 }
 function addDrop(event){
 	event.preventDefault();
