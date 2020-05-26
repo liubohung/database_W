@@ -153,11 +153,73 @@
 	nav_in();
 	$account = $_SESSION['account'];
 ?>
-	<div ondrop="sbDrop(event)" ondragover="AllowDrop(event)" class ="Box">
-		<!-- <div align="center"><H1>退選</H1></div> -->
+<div class="HT">
+	<div class="CT">
+		<div ondrop="sbDrop(event)" ondragover="AllowDrop(event)" class ="Box"><!-- <div align="center"><H1>退選</H1></div> --></div>
+		<div class ="Class"> 
+			<script>
+				department = new Array();
+				department[0] = ["企管一甲", "企管一乙", "企管二甲", "企管二乙", "企管三甲", "企管三乙", "企管四甲", "企管四乙", "企管碩一", "企管碩二"]; //企管系
+				department[1] = ["通識－社會整合(SB)", "通識－社會(S)", "通識－社會(夜)(S)", "通識－人文(H)", "通識－人文(夜)(H)", "通識－自然(N)", "通識－自然(夜)(N)", "通識－統合(M)", "通識－統合(夜)(M)"];    //通識課
+				department[2] = ["資訊一甲", "資訊一乙", "資訊一丙", "資訊二甲", "資訊二乙", "資訊二丙", "資訊二丁", "資訊三甲", "資訊三乙", "資訊三丙", "資訊三丁", "資訊碩一", "資訊博一", "資訊博二", "電腦系統學程資訊三", "軟體工程學程資訊三", "網路與資安學程資訊三", "資訊跨域學程資訊三"];  //資訊系
+				function renew(index) {
+					for (var i = 0; i < department[index].length; i++)
+						document.myForm.member.options[i] = new Option(department[index][i], department[index][i]); // 設定新選項
+					document.myForm.member.length = department[index].length;   // 刪除多餘的選項
+				}
+			</script>
+			<style type="text/css">
+				select{
+					height:20%;
+					line-height:32px;
+					font-size:14px;
+					width:70%;
+					border-bottom-style:solid;
+					text-align: center;
+					text-align-last: center;
+					margin:20px auto;
+					appearance:none;
+					-webkit-appearance:none;
+					-moz-appearance:none;
+					-ms-appearance:none;
+					-o-appearance:none;
+					-khtml-appearance:none;
+				}
+				#button_s{
+					text-align: center;
+					width:50%;
+					height:20%;
+					margin:20px auto;
+					float:left;
+				}
+			</style>
+			<form name="myForm">
+				<fieldset>
+					<div>
+						<p>學院</p>
+					</div>
+				</fieldset>
+				<br>
+				<div border="1px" style="display: flex;width: 80%;">
+					<p>系別</p>
+					<select id="department" onchange="renew(this.selectedIndex);">
+						<option value="企業管理學系">企業管理系</option>
+						<option value="通識核心課程">通識</option>
+						<option value="資訊工程學系">資訊工程系</option>
+					</select>
+				</div>
+				<div border="1px" style="display:flex;width:80%;">
+					<p>班級</p>
+					<select id="member">
+						<option value="">請由左方選取系別</option>
+					</select>
+				</div>	
+				<input type="button" id="button_s" value="Search" >
+			</form>
+		</div>
 	</div>
-	<div style="width : 100%;float:right;">
-		<div ondrop="addDrop(event)" ondragover="AllowDrop(event)" class="table"> 
+	<div class="AT">
+		<div ondrop="addDrop(event)" ondragover="AllowDrop(event)" class="addable"> 
 	<?php
 		require_once("conect.php");
 		$HELD = "SELECT class.Code,Day,Time,class_detail.Name FROM time JOIN class ON class.Code = time.Code JOIN class_detail ON class.Code = class_detail.Code WHERE Person_id = '$account' ORDER BY Time;";
@@ -187,8 +249,8 @@
 		foreach($rows as $row){
 			$list[$row['Time']][$row['Day']] = "<td width=\"10%\" style=\"padding:2px;\"><div id=" . $row['Time'] . $row['Day'] . " draggable=\"true\" class=\"div1\" ondragstart=\"Drag(event)\"><p class=\"name\">" . $row['Name'] ."<br>".$row['Code']. "<p></div></td> ";
 		}
-		print "<div><H3> 已選課表 </H3></div><br> ";
-		print " <table style=\"float:right;width:80%heigh:100%;\" border=\"1\" align=\"center\"><tbody>";
+		
+		print "<table border=\"1\" align=\"center\" style=\"width: 100%;\"><tbody>";
 		foreach ($list as $row) {
 			print "<tr style=\"height:80px\">";
 			foreach ($row as $key => $value){
@@ -196,20 +258,17 @@
 			}
 			print "</tr>";
 		}
-		print "</tbody></table><br>";
-		$credit_T = "SELECT Credit FROM student WHERE Student_id = '$account' ;";
-		$data_t = $db->query($credit_T);
-		$C_T_data = $data_t->fetch(PDO::FETCH_BOTH);
-		print "<h3> 目前學分 $C_T_data[Credit] </h3>";
+		print "</tbody></table></div>";
 		$db = null;
 	?>
-	</div>
-	<div id="Footer">
-		<div id="aaa-1" draggable="true" class="div2" ondragstart="Drag(event)" ondragexit ="EDrop(event)">
-			<p class="name">系統程式<br>3779</p>
-		</div>
-		<div id="aaa-1" draggable="true" class="div2" ondragstart="Drag(event)">
-			<p class="name">系統程式<br>3779</p>
+		<br>
+		<div id="Footer">
+			<div id="aaa-1" draggable="true" class="div2" ondragstart="Drag(event)" ondragexit ="EDrop(event)">
+				<p class="name">系統程式<br>3779</p>
+			</div>
+			<div id="aaa-1" draggable="true" class="div2" ondragstart="Drag(event)">
+				<p class="name">系統程式<br>3779</p>
+			</div>
 		</div>
 	</div>
 </div>
