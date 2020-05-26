@@ -26,7 +26,7 @@
 <?php
 session_start();
 include "func.php";
-nav();
+nav_judge();
 ?>
 </body>
 </html>
