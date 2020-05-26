@@ -41,7 +41,7 @@
 		$credit_T = "SELECT Credit FROM student WHERE Student_id = '$account' ;";
 		$data_t = $db->query($credit_T);
 		$C_T_data = $data_t->fetch(PDO::FETCH_BOTH);
-		if(isset($rows) and ($C_T_data['Credit'] != 0)){
+		if(isset($rows)){
 			print "<div style=\"text-align:center;\"><H3> 已選課表 </H3></div><br> ";
 			print " <table style=\"width:80%;\" border=\"1\" align=\"center\">";
 			print "<thead><tr style=\"height:40px\"> <th><div style=\"text-align:center;\">開課班級</div></th> <th><div style=\"text-align:center;\">課程名稱</div></th> <th><div style=\"text-align:center;\">選課代號</div></th><th><div style=\"text-align:center;\">學分數</div></th> <th><div style=\"text-align:center;\">必選修</div></th><th><div style=\"text-align:center;\">開課單位</div></th> <th><div style=\"text-align:center;\">收授人數</div></th> <th><div style=\"text-align:center;\">開課人數</div></th> <th><div style=\"text-align:center;\">授課教師</div></th> </tr></thead><tbody>" ;

@@ -174,7 +174,7 @@
 			13=>array('零' => "<td><div style=\"text-align:center;\">20:00 - 21:00</div></td>",'一'=>$N_C_E,'二'=>$N_C_E,'三'=>$N_C_E,'四' =>$N_C_E,'五' =>$N_C_E,'六' =>$N_C_E,'七' => $N_C_E),
 			14=>array('零' => "<td><div style=\"text-align:center;\">21:00 - 22:00</div></td>",'一'=>$N_C_E,'二'=>$N_C_E,'三'=>$N_C_E,'四' =>$N_C_E,'五' =>$N_C_E,'六' =>$N_C_E,'七' => $N_C_E)
 		);
-		foreach($rows as $row){<td  width="10%" >
+		foreach($rows as $row){
 			$list[$row['Time']][$row['Day']] = "<td width=\"10%\" style=\"padding:2px;\"><div id=" . $row['Time'] . $row['Day'] . " draggable=\"true\" class=\"div1\" ondragstart=\"Drag(event)\"><p class=\"name\">" . $row['Name'] ."<br>".$row['Code']. "<p></div></td> ";
 		}
 		print "<div style=\"text-align:center;\"><H3> 已選課表 </H3></div><br> ";

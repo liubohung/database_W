@@ -71,25 +71,33 @@
 			margin: 2%; 
 			border:2px black solid;
 			padding:5px;
+			flex-wrap: wrap; 
+			overflow-y: scroll;
 		}
 		.div1{
+			border-style: outset;
 			width:100%;
 			height:80px;
 			/*border:1px solid #0099FF;*/
-			padding:10px;
-			border:2px orange solid;
-			overflow: hidden;
+			
 			background-color:antiquewhite;
+			border:2px orange solid;
+
+			padding:10px;
+			overflow: hidden;
 		}
 		.div2{
 			width:10%;
-			height:90%;
+			height:94%;
+
 			background-color:#CCCCFF;
+			border:2px blue solid;
+
 			display: flex;
 			align-items: center;
 			/*border:1px solid #0099FF;*/
 			padding:10px;
-			border:2px blue solid;
+			
 			overflow: hidden;
 			float:left;
 			margin-right: 1%;
@@ -156,6 +164,7 @@
 <div class="HT">
 	<div class="CT">
 		<div ondrop="sbDrop(event)" ondragover="AllowDrop(event)" class ="Box"><!-- <div align="center"><H1>退選</H1></div> --></div>
+		<br>
 		<div class ="Class"> 
 			<script>
 				department = new Array();
@@ -216,6 +225,33 @@
 				</div>	
 				<input type="button" id="button_s" value="Search" >
 			</form>
+			<script>
+				$("#button_s").click(function(){
+					$("#Footer").empty();
+					$.ajax({
+						type: "POST",
+						url: "getclass.php",
+						dataType: "html",
+						data: {
+							Class: $("#member").val(),
+							Collage: $("#department").val(),
+						},
+						error: function(xhr) {
+							alert('Ajax request 發生錯誤');            },
+						success: function(msg){
+							var array_return =  $.parseJSON ( msg );
+							// console.log(array_return[0].Name);
+							for(var i=0 ;i<msg.length;i++){
+								var dii = "<div id=" + array_return[i].Name + array_return[i].Code + " draggable=\"true\" class=\"div2\" ondragstart=\"Drag(event)\" ondragexit=\"EDrop(event)\"><p class=\"name\">";
+								var eddi = "</p></div>";
+								var str = dii +  array_return[i].Name +  array_return[i].Code + eddi;
+								str+="<tr>" + dii + array_return[i].Class + eddi;
+								$("#Footer").append(str);
+							}
+						}
+					 });
+				});
+			</script>
 		</div>
 	</div>
 	<div class="AT">
@@ -270,6 +306,15 @@
 				<p class="name">系統程式<br>3779</p>
 			</div>
 		</div>
+		<script>
+			$("#Footer").on("mouseenter mouseleave", function (event) { //挷定滑鼠進入及離開事件
+			if (event.type == "mouseenter") {
+				$(this).css({"overflow-y": "scroll"}); //滑鼠進入
+			} else {
+				$(this).scrollTop(0).css({"overflow-y": "hidden"}); //滑鼠離開
+			}
+			});
+		</script>
 	</div>
 </div>
 </body>
