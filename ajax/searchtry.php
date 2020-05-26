@@ -28,7 +28,7 @@
                 document.myForm.member.options[i] = new Option(department[index][i], department[index][i]); // 設定新選項
             document.myForm.member.length = department[index].length;   // 刪除多餘的選項
         }
-    </script>
+</script>
     <style type="text/css">
         select{
             height:20%;
@@ -61,7 +61,7 @@
         </fieldset>
         <div border="1px" style="float:left;width: 50%;height: 50%;">
             <p>系別：</p>
-            <select id="department" onclick="renew(this.selectedIndex);">
+            <select id="department" onchange="renew(this.selectedIndex);">
                 <option value="企業管理學系">企業管理系</option>
                 <option value="通識核心課程">通識</option>
                 <option value="資訊工程學系">資訊工程系</option>

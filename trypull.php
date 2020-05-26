@@ -162,7 +162,7 @@
 		print "<h3> 目前學分 $C_T_data[Credit] </h3>";
 		$db = null;
 	?>
-		</div>
+	</div>
 	<div id="Footer">
 		<div id="aaa-1" draggable="true" class="div2" ondragstart="Drag(event)" ondragexit ="EDrop(event)">
 			<p class="name">系統程式<br>3779</p>
@@ -171,6 +171,6 @@
 			<p class="name">系統程式<br>3779</p>
 		</div>
 	</div>
-	</div>
+</div>
 </body>
 </html>
