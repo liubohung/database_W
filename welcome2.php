@@ -31,46 +31,12 @@
 
 </head>
 <body>
-	<header>
-		<?php
-			session_start();
-			if(isset( $_SESSION['account'])){
-				$account = $_SESSION['account'];
-			}else{
-				header("refresh:0;url=Home.php");
-			}
-			print "<h1> 歡迎$account </h1><br>";
-		?>
-	</header>
-	<nav class="navbar navbar-light navbar-static-top">
- 		<div class="container">   
- 			<div class="navbar-header">    
-    			<a class="navbar-brand" href="Home.php">首頁</a>   
- 			</div>   
-  			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-   				<ul class="nav navbar-nav navbar-right">
-   					<li> 
-   						<a href="search.php" aria-haspopup="true" role="button">課程查詢</a>
-   					</li>
-                    <li> 
-                        <a href="#" aria-haspopup="true" role="button">選課情況</a>
-                    </li>
-                    <li class="dropdown">
-    				    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" >
-						<?php print "$account" ?>
-    				    	<span class="caret"></span></a>
-    					<ul class="dropdown-menu">
-    						<li><a href="logout.php">用戶登出</a></li>
-    					    <li><a href="chpwd.php">更改密碼</a></li>    
-    					</ul>
-    				</li>       
-   			   </ul>   
-  			</div>  
-		</div> 
-	</nav>
-	
 	<?php
+		include "func.php";
 		require_once("conect.php");
+		session_start();
+		nav_in();
+		$account = $_SESSION['account'];
 		$HELD = "SELECT class.Code,Day,Time,class_detail.Name FROM time JOIN class ON class.Code = time.Code JOIN class_detail ON class.Code = class_detail.Code WHERE Person_id = '$account' ORDER BY Time;";
 		$db = new PDO('mysql:host=localhost;dbname=class_database',$connect_un,$connect_pw);
 		$cdata = $db->query($HELD);
@@ -137,10 +103,6 @@
 			<input type="submit" name="button" id="button" value="送出" />
 		</form>
 		<br>
-		<form action="welcome.php" method="post" class="fromcss" >
-			<p>所有課表<br></p>
-			<input type="submit" name="gogo">
-		</form>
 	</div>
 </body>
 </html>

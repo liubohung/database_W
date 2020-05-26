@@ -13,13 +13,15 @@
 			-webkit-user-select: none;
 			-ms-user-select: none;
 		}
-		#Box5{
-			width:104px;
-			height:104px;
-			padding:2px;
-    		border:1px #ccc dashed;
-    		float:left;
-    		margin-right:10px;
+		.Box{ 
+			width:20%;
+			height:80px;
+			float:left;
+			border:2px #cccccc dashed;
+		}
+		.table{
+			width:80%;
+			float:right; 
 		}
 		.div1{
 			width:100%;
@@ -42,11 +44,14 @@
 			float:left;
 			margin-right: 10px
 		}
-		.dragging {
-			opacity: .25;
-		}
-		.hover {
-			background-color: rgba(0,191,165,.04);
+		#Footer {
+			float:right;
+			height: 100px;
+			width : 80%;
+			position:absolute;
+			border:2px black solid;
+			padding:1%;
+			bottom:0px;
 		}
 	</style>
 </head>
@@ -101,53 +106,17 @@
 	}
 </script>
 <?php
+	include "func.php";
+	require_once("conect.php");
 	session_start();
-	if(isset( $_SESSION['account'] ) and isset( $_SESSION['pwd'] ) ){
-		$account = $_SESSION['account'];
-		print<<<_END
-			<nav class="navbar navbar-light navbar-static-top"> 
-				<div class="container">   
-				<div class="navbar-header">    
-					<a class="navbar-brand" href="Home.php">首頁</a>   
-				</div>
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav navbar-right">
-						<li> 
-							<a href="search.php" aria-haspopup="true" role="button">課程查詢</a>
-						</li>
-						<li> 
-							<a href="#" aria-haspopup="true" role="button">選課情況</a>
-						</li>
-						<li> 
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">
-								選課模式
-								<span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="trypull.php">一般選課</a></li>
-								<li><a href="welcome.php">快速選課</a></li>
-								<li><a href="welcome2.php">課表選課</a></li>  
-							</ul>
-						</li>
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">
-								$account
-								<span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="logout.php">用戶登出</a></li>
-								<li><a href="chpwd.php">更改密碼</a></li> 
-							</ul>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</nav>
-		_END;
-	}
+	nav_in();
+	$account = $_SESSION['account'];
 ?>
-<div ondrop="sbDrop(event)" ondragover="AllowDrop(event)" style="border:2px #cccccc dashed;width:20%;height:180px;float:left;">
+	<div ondrop="sbDrop(event)" ondragover="AllowDrop(event)" class ="Box">
 		<!-- <div align="center"><H1>退選</H1></div> -->
 	</div>
-	<div ondrop="addDrop(event)" ondragover="AllowDrop(event)">
+	<div style="width : 100%;float:right;">
+		<div ondrop="addDrop(event)" ondragover="AllowDrop(event)" class="table"> 
 	<?php
 		require_once("conect.php");
 		$HELD = "SELECT class.Code,Day,Time,class_detail.Name FROM time JOIN class ON class.Code = time.Code JOIN class_detail ON class.Code = class_detail.Code WHERE Person_id = '$account' ORDER BY Time;";
@@ -177,8 +146,8 @@
 		foreach($rows as $row){
 			$list[$row['Time']][$row['Day']] = "<td width=\"10%\" style=\"padding:2px;\"><div id=" . $row['Time'] . $row['Day'] . " draggable=\"true\" class=\"div1\" ondragstart=\"Drag(event)\"><p class=\"name\">" . $row['Name'] ."<br>".$row['Code']. "<p></div></td> ";
 		}
-		print "<div style=\"text-align:center;\"><H3> 已選課表 </H3></div><br> ";
-		print " <table style=\" float:left;width:80%;\" border=\"1\" align=\"center\"><tbody>";
+		print "<div><H3> 已選課表 </H3></div><br> ";
+		print " <table style=\"float:right;width:80%heigh:100%;\" border=\"1\" align=\"center\"><tbody>";
 		foreach ($list as $row) {
 			print "<tr style=\"height:80px\">";
 			foreach ($row as $key => $value){
@@ -193,47 +162,8 @@
 		print "<h3> 目前學分 $C_T_data[Credit] </h3>";
 		$db = null;
 	?>
-	<!-- <table border="1" align="center" style="float:left;width:80%">
-		<tbody>
-			<tr style="height:80px">
-				<td width="80"></td>
-				<td> 星期一 </td>
-				<td> 星期二 </td>
-				<td> 星期三 </td>
-				<td> 星期四 </td>
-				<td> 星期五 </td>
-				<td> 星期六 </td>
-				<td> 星期天 </td>
-			</tr>
-			<tr style="height:80px">
-				<td width="10%">8:00 - 9:00</td>
-				<td width="10%">  </td>
-				<td width="10%">  </td>
-				
-					<div id="xxx-1" draggable="true" class="div1" ondragstart="Drag(event)" ondragend=""><p class="name">全民國防教育軍事訓練<br>3779</p></div>
-				</td><td  width="10%" style="padding:2px;">
-				<td width="10%">  </td>
-				<td width="10%">  </td>
-				<td width="10%">  </td>
-				<td width="10%">  </td>
-			</tr>
-			<tr style="height:80px">
-				<td width=10% >9:00 - 10:00</td>
-				<td width=10% style="padding:2px;">
-					<div id="ccc-1" draggable="true" class="div1" ondragstart="Drag(event)"><p class="name">統計學(二)<br>2152</p></div></td> 
-				<td width="10%">  </td>
-				<td width="10%" style="padding:2px;">
-					<div id="xxx-2" draggable="true" class="div1" ondragstart="Drag(event)"><p class="name">全民國防教育軍事訓練<br>3779</p></div>
-				</td>
-				<td width="10%">  </td>
-				<td width="10%">  </td>
-				<td width="10%">  </td>
-				<td width="10%">  </td>
-			</tr>
-		</tbody>
-	</table> -->
-	</div>
-	<div id="footer" style="width:100%;height:110px;border:2px black solid;position:absolute;bottom:0px; padding: 1%">
+		</div>
+	<div id="Footer">
 		<div id="aaa-1" draggable="true" class="div2" ondragstart="Drag(event)" ondragexit ="EDrop(event)">
 			<p class="name">系統程式<br>3779</p>
 		</div>
@@ -241,5 +171,7 @@
 			<p class="name">系統程式<br>3779</p>
 		</div>
 	</div>
+	</div>
+
 </body>
 </html>
