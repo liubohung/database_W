@@ -24,6 +24,7 @@
 	</header>
 <body>
 <?php
+session_start();
 include "func.php";
 nav();
 ?>

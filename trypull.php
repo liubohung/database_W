@@ -13,15 +13,64 @@
 			-webkit-user-select: none;
 			-ms-user-select: none;
 		}
+		.HT{
+			display:flex;
+			flex-direction: row;
+			align-items: flex-start;
+			border:2px  black solid;
+		}	
+		.CT{
+			display:flex;
+			flex-direction: column;
+			justify-content: space-around;
+			margin: 2%;
+			width: 16%;
+			height:100%;
+			float:right;
+			border:2px black solid;
+		}
 		.Box{ 
-			width:20%;
-			height:80px;
+			display:flex;
+			width:98%;
+			margin:1%;
+			height:900px;
 			float:left;
 			border:2px #cccccc dashed;
+			margin: 1%;
 		}
-		.table{
-			width:80%;
-			float:right; 
+		.Class{
+			display:flex;
+			border:2px black solid;
+			justify-content: center;
+			align-items: center;
+		}
+		.AT{
+			display:flex;
+			flex-direction: column;
+			justify-content: space-around;
+			margin: 2%;
+			width: 76%;
+			height:100%;
+			float:right;
+			border:2px black solid;
+		}
+		.addable{
+			display: flex;
+			/* align-items: center;		 */
+			width:100%;
+			/* float:right; */
+			/* top: 0px; */
+			/* border:2px black solid; */
+		}
+		#Footer{
+			display: flex;
+			/* justify-content: center; */
+			align-items: center;
+			/* position: absolute;*/
+			height: 10%;
+			margin: 2%; 
+			border:2px black solid;
+			padding:5px;
 		}
 		.div1{
 			width:100%;
@@ -33,25 +82,17 @@
 			background-color:antiquewhite;
 		}
 		.div2{
-			display: inline-block;
 			width:10%;
-			height:auto;
+			height:90%;
 			background-color:#CCCCFF;
+			display: flex;
+			align-items: center;
 			/*border:1px solid #0099FF;*/
 			padding:10px;
 			border:2px blue solid;
 			overflow: hidden;
 			float:left;
-			margin-right: 10px
-		}
-		#Footer {
-			float:right;
-			height: 100px;
-			width : 80%;
-			position:absolute;
-			border:2px black solid;
-			padding:1%;
-			bottom:0px;
+			margin-right: 1%;
 		}
 	</style>
 </head>
