@@ -234,33 +234,6 @@
 				</div>	
 				<input type="button" id="button_s" value="Search" >
 			</form>
-			<script>
-				$("#button_s").click(function(){
-					$("#Footer").empty();
-					$.ajax({
-						type: "POST",
-						url: "getclass.php",
-						dataType: "html",
-						data: {
-							Class: $("#member").val(),
-							Collage: $("#department").val(),
-						},
-						error: function(xhr) {
-							alert('Ajax request 發生錯誤');            },
-						success: function(msg){
-							var array_return =  $.parseJSON ( msg );
-							// console.log(array_return[0].Name);
-							for(var i=0 ;i<msg.length;i++){
-								var dii = "<div id=" + array_return[i].Name + array_return[i].Code + " draggable=\"true\" class=\"div2\" ondragstart=\"Drag(event)\" ondragexit=\"EDrop(event)\"><p class=\"name\">";
-								var eddi = "</p></div>";
-								var str = dii +  array_return[i].Name +  array_return[i].Code + eddi;
-								str+="<tr>" + dii + array_return[i].Class + eddi;
-								$("#Footer").append(str);
-							}
-						}
-					 });
-				});
-			</script>
 		</div>
 	</div>
 	<div class="AT">
@@ -428,5 +401,32 @@
 		</div>
 	</div>
 </div>
+<script>
+	$("#button_s").click(function(){
+		$("#Footer").empty();
+		$.ajax({
+			type: "POST",
+			url: "getclass.php",
+			dataType: "html",
+			data: {
+				Class: $("#member").val(),
+				Collage: $("#department").val(),
+			},
+			error: function(xhr) {
+				alert('Ajax request 發生錯誤');            },
+			success: function(msg){
+				var array_return =  $.parseJSON ( msg );
+				// console.log(array_return[0].Name);
+				for(var i=0 ;i<msg.length;i++){
+					var dii = "<div id=" + array_return[i].Name + array_return[i].Code + " draggable=\"true\" class=\"div2\" ondragstart=\"Drag(event)\" ondragexit=\"EDrop(event)\"><p class=\"name\">";
+					var eddi = "</p></div>";
+					var str = dii +  array_return[i].Name +  array_return[i].Code + eddi;
+					str+="<tr>" + dii + array_return[i].Class + eddi;
+					$("#Footer").append(str);
+				}
+			}
+		 });
+	});
+</script>
 </body>
 </html>
