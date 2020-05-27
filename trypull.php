@@ -90,8 +90,8 @@
 			overflow: hidden;
 		}
 		.div2{
-			width:10%;
-			height:94%;
+			width:15%;
+			height:80px;
 
 			background-color:#CCCCFF;
 			border:2px blue solid;
@@ -104,6 +104,7 @@
 			overflow: hidden;
 			float:left;
 			margin-right: 1%;
+			margin-bottom:1%;
 		}
 		select{
 			height:20%;
