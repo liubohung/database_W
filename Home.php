@@ -4,8 +4,10 @@
 	<meta charset="utf-8">
 	<title>Home</title>
 	<link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist\css\bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>     
 	<script src="bootstrap-3.3.7-dist\js/bootstrap.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 	<style type="text/css">
 		body{
 			background-color: #eaf3db;
@@ -25,41 +27,13 @@
 		<h1>選課系統</H1>
 		<br>
 	</header>
-<body>
+
 <?php
 session_start();
 include "func.php";
 nav_judge();
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>search</title>
-	<link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist\css\bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>     
-	<script src="bootstrap-3.3.7-dist\js/bootstrap.min.js"></script>
-	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-	<style type="text/css">
-		div.ui-dialog-content{
-			font-size : 30px;
-			font-family: georgia;
-			font-style : italic;
-		}
-		#accordion{
 
-		}
-	</style>
-</head>
-<body>
-	<div id="dialog" title="windows">
-		<p> Content</p>
-	</div>
-	<header>
-		<h1>選課系統</H1>
-		<br>
-	</header>
 <div align="center" style="width: 90%;margin:5%;">	
 <div align="center" id="accordion">
 	<H1>選課公告</H1>
@@ -82,21 +56,17 @@ nav_judge();
 <div>
 <script>
 	$("#accordion").accordion();
-	$("#dialog").dialog({
-      		autoOpen:true ,
-      	show: {
-        	effect: "puff",
-        	duration: 1000
-    	},
-      	hide: {
-        	effect: "slide",
-        	duration: 100
-      	}
-    });
+	// $("#dialog").dialog({
+    //   		autoOpen:true ,
+    //   	show: {
+    //     	effect: "puff",
+    //     	duration: 1000
+    // 	},
+    //   	hide: {
+    //     	effect: "slide",
+    //     	duration: 100
+    //   	}
+    // });
 	</script>
-</body>
-<script>
-	$("#accordion").accordion();
-</script>
 </body>
 </html>

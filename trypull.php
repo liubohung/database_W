@@ -215,13 +215,6 @@
     			temp.submit();        
     			return temp;        
 			}
-<<<<<<< HEAD
-			history.go(0); 
-			post("addclass.php",addC);
-=======
-			// post_add("addclass.php",addC);
-			// history.go(0);
->>>>>>> e7239efc3d8b0a82d8a1e92003f55aab539e2b58
 	}
 </script>
 
