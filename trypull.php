@@ -168,8 +168,8 @@
     			temp.submit();        
     			return temp;        
 			}
-			// history.go(0); 
-			// post("addclass.php",addC);
+			history.go(0); 
+			post("addclass.php",addC);
 	}
 </script>
 <?php

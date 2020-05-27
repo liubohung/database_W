@@ -15,6 +15,9 @@
 			font-style: italic;
 			font-size:150%;
 		}
+		#accordion{
+
+		}
 	</style>
 </head>
 <body>
@@ -28,5 +31,15 @@ session_start();
 include "func.php";
 nav_judge();
 ?>
+<div id="accordion">
+	<H1>選課時間</H1>
+	<div>內容</div>
+	<H1>選課須知</H1>
+	<div>...</div>
+	<H1></H1>
+</div>
+<script>
+	$("#accordion").accordion();
+</script>
 </body>
 </html>
