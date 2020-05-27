@@ -7,6 +7,9 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>     
 	<script src="bootstrap-3.3.7-dist\js/bootstrap.min.js"></script>
 	<style type="text/css">
+		body{
+			background-color: #eaf3db; 
+		}
 		[draggable="true"] {
 			user-select: none;
 			-moz-user-select: none;
@@ -102,8 +105,37 @@
 			float:left;
 			margin-right: 1%;
 		}
+		select{
+			height:20%;
+			line-height:32px;
+			font-size:14px;
+			width:70%;
+			border-bottom-style:solid;
+			text-align: center;
+			text-align-last: center;
+			margin:20px auto;
+			appearance:none;
+			-webkit-appearance:none;
+			-moz-appearance:none;
+			-ms-appearance:none;
+			-o-appearance:none;
+			-khtml-appearance:none;
+		}
+		#button_s{
+			text-align: center;
+			width:50%;
+			height:20%;
+			margin:20px auto;
+			float:left;
+		}
 	</style>
 </head>
+<?php
+	include "func.php";
+	session_start();
+	nav_in();
+	$account = $_SESSION['account'];
+?>
 <body>
 <script type="text/javascript">
 	function AllowDrop(event){
@@ -124,7 +156,7 @@
     	var data=event.dataTransfer.getData("text");
     	event.currentTarget.appendChild(document.getElementById(data));
     	if (confirm("是否確定退選") ) {
-	 	   console.log(data);
+			console.log(data);
     		var str = 'div#'+ data+' .name';
     		var subC = ($(str).text().replace(/[^0-9]/ig,""));
     		console.log(str);
@@ -150,35 +182,44 @@
 	function addDrop(event){
 		event.preventDefault();
     	var data=event.dataTransfer.getData("text");
-    	event.currentTarget.appendChild(document.getElementById(data));
-    		var str = 'div#' + data + ' .name';
+    	// event.currentTarget.appendChild(document.getElementById(data));
+    	var str = 'div#' + data + ' .name';
     		var addC = ($(str).text().replace(/[^0-9]/ig,""));
     		console.log(str);
     		console.log(($(str).text().replace(/[^0-9]/ig,"")));
+			$.ajax({
+					type: "POST",
+					url: "addclass.php",
+					dataType: "html",
+					data: {
+						addchoose: addC
+					},
+					error: function(xhr) {
+						alert('Ajax request 發生錯誤');            
+					},
+					success: function(msg){
+						alert ("加選成功");
+						history.go(0);
+					}
+			});	
    			function post_add(URL, PARAMS) {        
     			var temp = document.createElement("form");        
     			temp.action = URL;        
     			temp.method = "post";        
     			temp.style.display = "none";
     			var opt = document.createElement("input");        
-        		opt.name = 'subchoose';        
+        		opt.name = 'addchoose';        
         		opt.value = PARAMS;
         		temp.appendChild(opt);        
     			document.body.appendChild(temp);        
     			temp.submit();        
     			return temp;        
 			}
-			// history.go(0); 
-			// post("addclass.php",addC);
+			// post_add("addclass.php",addC);
+			// history.go(0);
 	}
 </script>
-<?php
-	include "func.php";
-	require_once("conect.php");
-	session_start();
-	nav_in();
-	$account = $_SESSION['account'];
-?>
+
 <div class="HT">
 	<div class="CT">
 		<div ondrop="sbDrop(event)" ondragover="AllowDrop(event)" class ="Box"><!-- <div align="center"><H1>退選</H1></div> --></div>
@@ -195,31 +236,6 @@
 					document.myForm.member.length = department[index].length;   // 刪除多餘的選項
 				}
 			</script>
-			<style type="text/css">
-				select{
-					height:20%;
-					line-height:32px;
-					font-size:14px;
-					width:70%;
-					border-bottom-style:solid;
-					text-align: center;
-					text-align-last: center;
-					margin:20px auto;
-					appearance:none;
-					-webkit-appearance:none;
-					-moz-appearance:none;
-					-ms-appearance:none;
-					-o-appearance:none;
-					-khtml-appearance:none;
-				}
-				#button_s{
-					text-align: center;
-					width:50%;
-					height:20%;
-					margin:20px auto;
-					float:left;
-				}
-			</style>
 			<form name="myForm">
 				<fieldset>
 					<div>
@@ -255,7 +271,8 @@
 							Collage: $("#department").val(),
 						},
 						error: function(xhr) {
-							alert('Ajax request 發生錯誤');            },
+							alert('Ajax request 發生錯誤');            
+						},
 						success: function(msg){
 							var array_return =  $.parseJSON ( msg );
 							// console.log(array_return[0].Name);
@@ -263,11 +280,10 @@
 								var dii = "<div id=" + array_return[i].Name + array_return[i].Code + " draggable=\"true\" class=\"div2\" ondragstart=\"Drag(event)\" ondragexit=\"EDrop(event)\"><p class=\"name\">";
 								var eddi = "</p></div>";
 								var str = dii +  array_return[i].Name +  array_return[i].Code + eddi;
-								str+="<tr>" + dii + array_return[i].Class + eddi;
 								$("#Footer").append(str);
 							}
 						}
-					 });
+					});
 				});
 			</script>
 		</div>
