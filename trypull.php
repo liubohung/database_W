@@ -141,9 +141,27 @@
 	}
 	function addDrop(event){
 		event.preventDefault();
-    	// var data=event.dataTransfer.getData("text");
-    	// event.currentTarget.appendChild(document.getElementById(data));
-    	alert("add");
+    	var data=event.dataTransfer.getData("text");
+    	event.currentTarget.appendChild(document.getElementById(data));
+    		var str = 'div#' + data + ' .name';
+    		var addC = ($(str).text().replace(/[^0-9]/ig,""));
+    		console.log(str);
+    		console.log(($(str).text().replace(/[^0-9]/ig,"")));
+   			function post_add(URL, PARAMS) {        
+    			var temp = document.createElement("form");        
+    			temp.action = URL;        
+    			temp.method = "post";        
+    			temp.style.display = "none";
+    			var opt = document.createElement("input");        
+        		opt.name = 'subchoose';        
+        		opt.value = PARAMS;
+        		temp.appendChild(opt);        
+    			document.body.appendChild(temp);        
+    			temp.submit();        
+    			return temp;        
+			}
+			// history.go(0); 
+			// post("addclass.php",addC);
 	}
 </script>
 <?php

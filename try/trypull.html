@@ -111,17 +111,14 @@
 	}	
 	function sbDrop(event){
    		event.preventDefault();
-    	// if()
-    	console.log(event.target.class);
     	var data=event.dataTransfer.getData("text");
     	event.currentTarget.appendChild(document.getElementById(data));
     	if (confirm("是否確定退選") ) {
-	 	   console.log(data);
     		var str = 'div#'+ data+' .name';
     		var subC = ($(str).text().replace(/[^0-9]/ig,""));
-    		console.log(str);
+    		// console.log(str);
     		console.log(($(str).text().replace(/[^0-9]/ig,"")));
-   			function post(URL, PARAMS) {        
+   			function post_sub(URL, PARAMS) {        
     			var temp = document.createElement("form");        
     			temp.action = URL;        
     			temp.method = "post";        
@@ -134,16 +131,34 @@
     			temp.submit();        
     			return temp;        
 			}
-			post("subclass.php",subC);		
+			// post("subclass.php",subC);		
 		} else {
 			history.go(0); 
 		}
 	}
 	function addDrop(event){
 		event.preventDefault();
-    	// var data=event.dataTransfer.getData("text");
-    	// event.currentTarget.appendChild(document.getElementById(data));
-    	alert("add");
+    	var data=event.dataTransfer.getData("text");
+    	event.currentTarget.appendChild(document.getElementById(data));
+    		var str = 'div#' + data + ' .name';
+    		var addC = ($(str).text().replace(/[^0-9]/ig,""));
+    		console.log(str);
+    		console.log(($(str).text().replace(/[^0-9]/ig,"")));
+   			function post_add(URL, PARAMS) {        
+    			var temp = document.createElement("form");        
+    			temp.action = URL;        
+    			temp.method = "post";        
+    			temp.style.display = "none";
+    			var opt = document.createElement("input");        
+        		opt.name = 'subchoose';        
+        		opt.value = PARAMS;
+        		temp.appendChild(opt);        
+    			document.body.appendChild(temp);        
+    			temp.submit();        
+    			return temp;        
+			}
+			history.go(0); 
+			post("addclass.php",addC);
 	}
 </script>
 		<nav class="navbar navbar-light navbar-static-top">
@@ -395,7 +410,7 @@
 			<div id="aaa-1" draggable="true" class="div2" ondragstart="Drag(event)" ondragexit ="EDrop(event)">
 				<p class="name">系統程式<br>3779</p>
 			</div>
-			<div id="aaa-1" draggable="true" class="div2" ondragstart="Drag(event)">
+			<div id="bbb-1" draggable="true" class="div2" ondragstart="Drag(event)">
 				<p class="name">系統程式<br>3779</p>
 			</div>
 		</div>
