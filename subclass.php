@@ -54,7 +54,7 @@ if (isset($_SESSION['account']) && isset($_POST['subchoose'])) {
 	}
 	$db = null;
 	switch($_SERVER['HTTP_REFERER']){
-		case:"http://127.0.0.1/database_W/welcome2.php":
+		case "http://127.0.0.1/database_W/welcome2.php":
 			header("refresh:0;url=welcome2.php");
 		break;
 		default:
