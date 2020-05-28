@@ -65,7 +65,7 @@ function nav_noin(){
 								<span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a href="login.html">用戶登入</a></li>
-								<li><a href="checkuser.php">查詢密碼</a></li>
+								<li><a href="checkuser.html">查詢密碼</a></li>
 							</ul>
 						</li>
 					</ul>
@@ -135,7 +135,7 @@ function nav_judge() {
 								<span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a href="login.html">用戶登入</a></li>
-								<li><a href="checkuser.php">查詢密碼</a></li>
+								<li><a href="checkuser.html">查詢密碼</a></li>
 							</ul>
 						</li>
 					</ul>

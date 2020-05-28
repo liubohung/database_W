@@ -94,7 +94,8 @@
                 Collage: $("#department").val(),
             },
             error: function(xhr) {
-                alert('Ajax request 發生錯誤');            },
+                alert('Ajax request 發生錯誤');
+            },
             success: function(msg){
                 var array_return =  $.parseJSON ( msg );
                 console.log(array_return[0].Name);
