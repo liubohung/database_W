@@ -41,10 +41,10 @@
 			}catch (PODException $e){
 				print "couldn't to connect to db " . $e->getMessage();
 			}
-		}else if($account_T == 'T') {
+		}
+		if($account_T == 'T') {
 			
 		}
-			
 	} else {
 		print<<<_END
 				<script>

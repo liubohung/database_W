@@ -1,10 +1,11 @@
 <?php
 	session_start();
+	require_once("conect.php");
 	if(isset( $_SESSION['account'])){
 		$ac = $_SESSION['account'];
-		require_once("conect.php");
 		$ps1 = $_POST['change'];
 		$ps2 = $_POST['check'];
+		
 		
 		if( $ps1 == $ps2 ){
 			$pwd_h = password_hash($ps1, PASSWORD_DEFAULT);

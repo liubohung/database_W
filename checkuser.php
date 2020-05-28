@@ -1,34 +1,22 @@
 <?php
 	require_once("conect.php");
-	if ( isset($_POST['Name']) && isset($_POST['Email']) ) {
+	if ( isset($_POST['Account']) && isset($_POST['Email']) ) {
 		$email = $_POST['Email'];
-		$name = $_POST['Name'];
+		$account= $_POST['Account'];
 		try{
 			$db = new PDO('mysql:host=localhost;dbname=class_database',$connect_un,$connect_pw);
-			$cusr=$db->query("SELECT Name FROM user WHERE Name = '$name';");
+			$cusr=$db->query("SELECT Email FROM student WHERE Student_id = '$account';");
 			$row1=$cusr->fetch(PDO::FETCH_BOTH);
-			if(empty($row1[0])){
-				$password_hash = password_hash($password, PASSWORD_DEFAULT);
-				$q= "INSERT INTO user (Name,Email,Phone,Password) VALUES ('$name','$email','$phone','$password_hash');";
-				$result = $db->exec($q);
-				if ($result === false) {
-					$error = $db->errorinfo();
-					$db =null;
-					print "cant no insert";
-					print<<<_END
-					<script>
-					setTimeout(function(){window.location.href='newuser.html';},1000);
-					</script>
-					_END;
-				} else {
-					$db =null;
-					print<<<_END
-					<script>
-					alert ("成功註冊");
-					setTimeout(function(){window.location.href='Home.html';},1000);
-					</script>
-				_END;
-				}
+			if($email == $row1){
+				$message = Swift_Message::newInstance();
+				$message->setFrom("127.0.0.1");
+				$message->setTo($email);
+				$message->setSubject("Change Password");
+				$message->setBody(<<<_TEXT_
+				If you need to change password;
+				please go to here;
+				_TEXT_);
+				
 			}else{
 				$db =null;
 				print<<<_END
