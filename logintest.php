@@ -5,7 +5,7 @@
 		$account = $_POST['account'];
 		$pwd = $_POST['password'];
 		$account_T = substr($account,1);
-		if($account_T == 'D'){
+		if($account_T == 'D' || $account_T == 'd'){
 			try{
 				$db = new PDO('mysql:host=localhost;dbname=class_database',$connect_un,$connect_pw);
 				$cusr=$db->query("SELECT Student_id FROM student WHERE Student_id = '$account';");
@@ -42,10 +42,12 @@
 				print "couldn't to connect to db " . $e->getMessage();
 			}
 		}
-		if($account_T == 'T') {
+		if($account_T == 'T' ||$account_T == 't') {
+			
+		}else{
 			
 		}
-	} else {
+	}else{
 		print<<<_END
 				<script>
 				alert ("輸入不正確請重新輸入");
@@ -53,4 +55,5 @@
 				</script>
 		_END;
 	}
+}
 ?>
