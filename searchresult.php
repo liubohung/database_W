@@ -33,8 +33,7 @@
 							</tr> ";
 				}
 				print "</table>";
-				print "<a herf=\"searchtry.php\">返回查詢</a>";
-				print "<input type=\"button\" value=\"返回查詢\" onclick=\"location.href='search.php'\"> ";
+				print "<input type=\"button\" value=\"返回查詢\" onclick=\"location.href='searchtry.php'\"> ";
 				print "</div>";
 			}
 		}

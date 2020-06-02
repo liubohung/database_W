@@ -12,7 +12,7 @@ function nav_in(){
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-right">
 						<li>
-							<a href="search.php" aria-haspopup="true" role="button">課程查詢</a>
+							<a href="searchtry.php" aria-haspopup="true" role="button">課程查詢</a>
 						</li>
 						<li>
 							<a href="#" aria-haspopup="true" role="button">選課情況</a>
@@ -55,7 +55,7 @@ function nav_noin(){
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-right">
 						<li>
-							<a href="search.php" aria-haspopup="true" role="button">課程查詢</a>
+							<a href="searchtry.php" aria-haspopup="true" role="button">課程查詢</a>
 						</li>
 						<li>
 						    <a href="#" aria-haspopup="true" role="button">選課情況</a>
@@ -64,8 +64,8 @@ function nav_noin(){
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">
 								<span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="login.html">用戶登入</a></li>
-								<li><a href="checkuser.html">查詢密碼</a></li>
+								<li><a href="login.php">用戶登入</a></li>
+								<li><a href="cwdsearch.php">查詢密碼</a></li>
 							</ul>
 						</li>
 					</ul>
@@ -86,7 +86,7 @@ function nav_judge() {
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-right">
 						<li>
-							<a href="search.php" aria-haspopup="true" role="button">課程查詢</a>
+							<a href="searchtry.php" aria-haspopup="true" role="button">課程查詢</a>
 						</li>
 						<li>
 							<a href="#" aria-haspopup="true" role="button">選課情況</a>
@@ -125,7 +125,7 @@ function nav_judge() {
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-right">
 						<li>
-							<a href="search.php" aria-haspopup="true" role="button">課程查詢</a>
+							<a href="searchtry.php" aria-haspopup="true" role="button">課程查詢</a>
 						</li>
 						<li>
 						    <a href="#" aria-haspopup="true" role="button">選課情況</a>
@@ -134,8 +134,8 @@ function nav_judge() {
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">
 								<span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="login.html">用戶登入</a></li>
-								<li><a href="checkuser.html">查詢密碼</a></li>
+								<li><a href="login.php">用戶登入</a></li>
+								<li><a href="cwdsearch.php">查詢密碼</a></li>
 							</ul>
 						</li>
 					</ul>

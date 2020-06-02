@@ -60,11 +60,6 @@
 	</div>
     <div id="cccc" style="text-align:center">
     <form name="myForm">
-        <fieldset>
-            <div>
-                <p>學院</p>
-            </div>
-        </fieldset>
         <div border="1px" style="float:left;width: 50%;height: 50%;">
             <p>系別：</p>
             <select id="department" onchange="renew(this.selectedIndex);">
