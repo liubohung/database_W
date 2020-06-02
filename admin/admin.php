@@ -3,9 +3,12 @@
 	<head>
 		<title>Admin</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- <link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist\css\bootstrap.min.css"> -->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-	<style>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>     
+		<script src="bootstrap-3.3.7-dist\js/bootstrap.min.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style>
 		pre
 		{
 		    overflow-x: auto;
@@ -21,23 +24,37 @@
 	</head>
 	<body>
 		<h1>管理者介面</h1>
-	</body>
-</html>
-
-<html><div class="container">
+		<nav class="navbar navbar-light navbar-static-top">
+				<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="admin.php">首頁</a>
+				</div>
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">
+                        新增</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="new_teacher.php">新增教師</a></li>
+                            <li><a href="new_student.php">新增學生</a></li>
+                        </ul>
+                        </li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">
+                            刪除</a>
+							<ul class="dropdown-menu">
+								<li><a href="delete_teacher.php">刪除教師</a></li>
+								<li><a href="delete_student.php">刪除學生</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
 <?php
-	print<<<_END
-		<p>
-			<h3>功能清單</h3>
-		</p>
-		<p>
-			<input type="button" value="新增教師名單" onclick="location.href='new_teacher.php'">
-			<input type="button" value="新增學生名單" onclick="location.href='new_student.php'">
-			<input type="button" value="刪除教師名單" onclick="location.href='delete_teacher.php'">
-			<input type="button" value="刪除學生名單" onclick="location.href='delete_student.php'">
-		</p>
-		_END;
-
+	// include "admin_nav.php";
+	// nav_in();
+	print "<div class=\"container\">";
 	$data = "";
 	$data .= '
 	<div class="card my-2">
@@ -247,4 +264,5 @@
 	$data1 .= '  </div>';
 	echo $data1;
 ?>
-</div></html>
+</body>
+</html>
