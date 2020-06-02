@@ -18,7 +18,7 @@
 			 research();
 		}else{
 			$db = new PDO('mysql:host=localhost;dbname=class_database',$connect_un,$connect_pw);
-			$cusr = $db->query("SELECT * FROM db_table_course WHERE 選課代號 = '$code'; ");
+			$cusr = $db->query("SELECT * FROM class_detail WHERE Code = '$code';");
 			$row = $cusr->fetch(PDO::FETCH_BOTH);
 			if(empty($row[0])){
 				research();
