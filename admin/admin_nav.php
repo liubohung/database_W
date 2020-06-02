@@ -1,33 +1,35 @@
 <?php
 function nav_in(){
 	print <<<_END
-		<nav class="navbar navbar-light navbar-static-top">
-			<div class="container">
-				<div class="navbar-header">
-					<a class="navbar-brand" href="admin.php">首頁</a>
-				</div>
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">
-                        新增<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="new_teacher.php">新增教師</a></li>
-                            <li><a href="new_student.php">新增學生</a></li>
-                        </ul>
-                        </li>
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">
-                            刪除<span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="delete_teacher.php">刪除教師</a></li>
-								<li><a href="delete_student.php">刪除學生</a></li>
-							</ul>
-						</li>
-					</ul>
-				</div>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item dropdown">
+			<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			新增</a>
+			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+				<a class="dropdown-item" href="new_teacher.php">新增教師</a></li>
+				<a class="dropdown-item" href="new_student.php">新增學生</a>
+				<div class="dropdown-divider"></div>
+				<a class="dropdown-item" href="#">Something else here</a>
 			</div>
-		</nav>
-		_END;
-}
+			</li>
+			<li class="nav-item dropdown">
+			<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			刪除</a>
+			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+				<a class="dropdown-item" href="delete_teacher.php">刪除教師</a>
+				<a class="dropdown-item" href="delete_student.php">刪除學生</a>
+				<div class="dropdown-divider"></div>
+				<a class="dropdown-item" href="#">Something else here</a>
+			</div>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="logout.php">登出</a>
+			</li>
+		</ul>		
+		</div>
+	</nav>
+	_END;
+	}
 ?>

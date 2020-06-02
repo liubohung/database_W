@@ -1,7 +1,8 @@
 <?php
-	$Student_id = Null;
-	$College = Null;
-	$Department = Null;
+	unset($Student_id,$College,$Department);
+	//  = Null;
+	//  = Null;
+	//  = Null;
 	$Class = Null;
 	$Grade = Null;
 	$Name =Null;
@@ -47,7 +48,7 @@
 	    	}
 		}
     }
-    elseif((isset($_POST['button1']))&&($_POST['查詢項目']=="name"))
+    else if((isset($_POST['button1']))&&($_POST['查詢項目']=="name"))
     {
     	$Name = $_POST['Student_id'];
     	require_once("conect.php");
