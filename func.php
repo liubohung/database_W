@@ -145,4 +145,12 @@ function nav_judge() {
 		_END;
 	}
 }
+
+function nav_teacher(){
+
+}
+
+function admin(){
+	
+}
 ?>

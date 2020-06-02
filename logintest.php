@@ -43,6 +43,24 @@
 			}
 		}else if($account_T == 'T' || $account_T == 't') {
 			
+		}else if($account_T == 'A' || $account_T == 'a') {
+			$db = new PDO('mysql:host=localhost;dbname=class_database',$connect_un,$connect_pw);
+				$cusr=$db->query("SELECT Password FROM admin WHERE Admin_id = '$account';");
+				$row=$cusr->fetch(PDO::FETCH_BOTH);
+				if($pwd == $row['Password']){
+					session_start();
+					$_SESSION['A_account'] = $account;
+					$_SESSION['A_pwd'] = $pwd;
+					header("refresh:0;url=admin\admin.php");
+					$db=null;
+				}else{
+					print<<<_END
+						<script>
+						alert ("使用者名稱或密碼錯誤");
+						setTimeout(function(){window.location.href='login.html';},1000);
+						</script>
+						_END;
+				}
 		}else{
 			print<<<_END
 				<script>
