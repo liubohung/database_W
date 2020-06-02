@@ -7,7 +7,7 @@
 		print<<<_END
 			<script>
 			alert ("請重新查詢");
-			setTimeout(function(){window.location.href='search.php';},1000);
+			setTimeout(function(){window.location.href='searchtry.php';},1000);
 			</script>
 		_END;
 	}
@@ -33,6 +33,7 @@
 							</tr> ";
 				}
 				print "</table>";
+				print "<a herf=\"searchtry.php\">返回查詢</a>";
 				print "<input type=\"button\" value=\"返回查詢\" onclick=\"location.href='search.php'\"> ";
 				print "</div>";
 			}

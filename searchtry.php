@@ -52,6 +52,12 @@
 	    session_start();
 	    nav_judge();
     ?>
+    <div style="text-align:center" >
+			<form action="searchresult.php" method="post" class="fromcss">
+					<p>課程代號查詢<br> <input class="inputcss" type="text" name="search_class"></p>
+					<input type="submit" name="value">
+			</form>
+	</div>
     <div id="cccc" style="text-align:center">
     <form name="myForm">
         <fieldset>

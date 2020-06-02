@@ -46,8 +46,8 @@
 	?>
 	<div style="text-align:center";>
 		<form name="CPW" action="CPW.php" method="post" class="fromcss" onclick="return false">
-				<p>更改密碼<br><input class ="inputcss" type="text" name="change"></p>
-				<p>確認密碼<br><input class ="inputcss" type="text" name="check"></p>
+				<p>原始密碼<br><input class ="inputcss"  type="password" name="change"></p>
+				<p>更改密碼<br><input class ="inputcss" type="password" name="check"></p>
 				<input type="submit" name="button" id="button" value="送出" />
 		</form>
 	</div>
