@@ -41,7 +41,6 @@
     <script>
         $("#button_s").click(function(){
             $( "#mytbody" ).empty();
-            $( "#mytbody" ).append("<tr id=\"T_id\"></tr><tr id=\"name\"></tr><tr id=\"college\"></tr><tr id=\"department\"></tr><tr id =\"class\"></tr><tr id=\"mail\"></tr><tr id=\"level\"></tr>");
             console.log("111");
             $.ajax({
                 type: "POST",
@@ -63,6 +62,7 @@
                     }else{
                         var dii = "<td>";
                         var eddi = "</td>";
+                        $( "#mytbody" ).append("<tr id=\"T_id\"></tr><tr id=\"name\"></tr><tr id=\"college\"></tr><tr id=\"department\"></tr><tr id =\"class\"></tr><tr id=\"mail\"></tr><tr id=\"level\"></tr>");
                         $("#T_id").append("<td>教師id</td>" +dii + array_return['Teacher_id'] + eddi);
                         $("#name").append("<td>名字</td>" + dii + array_return['Name'] + eddi);
                         $("#college").append("<td>學院</td>"+dii+array_return['College'] + eddi);
