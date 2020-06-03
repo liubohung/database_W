@@ -17,11 +17,11 @@
 			document.myForm.Department.length=department[index].length;	// 刪除多餘的選項
 		}
 	</script>
-	<p><h1>新增學生名單</h1></p>
-	<p><h4>一鍵匯入名單</h4></p>
+	<h1>新增學生名單</h1>
+	<h4>一鍵匯入名單</h4>
 	<form action="upload.php" method="post" enctype="multipart/form-data">檔案名稱:
-		<input type="file" name="file" id="file" /><br />
-		<input type="submit" name="submit" value="上傳檔案" />
+		<input type="file" name="file" id="file"><br />
+		<input type="submit" name="submit" value="上傳檔案">
 	</form>
 	<form name="myForm" action="add_student_data.php" method="post" >
 		  <p>

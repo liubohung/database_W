@@ -1,8 +1,8 @@
 <?php
 	require_once("conect.php");
+	$db = new PDO('mysql:host=localhost;dbname=class_database',$connect_un,$connect_pw);
 
-	if(isset($_POST['Teacher_id']) && isset($_POST['College'])  && isset($_POST['Department'])  && isset($_POST['Class']) && isset($_POST['Name']) && isset($_POST['Email']) && isset($_POST['Password']) && isset($_POST['Level']))
-	{
+	if(isset($_POST['Teacher_id']) && isset($_POST['College'])  && isset($_POST['Department'])  && isset($_POST['Class']) && isset($_POST['Name']) && isset($_POST['Email']) && isset($_POST['Password']) && isset($_POST['Level'])){
 		$Teacher_id = $_POST['Teacher_id'];
 		$College = $_POST['College'];
 		$Department = $_POST['Department'];
@@ -11,15 +11,10 @@
 		$Email = $_POST['Email'];
 		$Password = $_POST['Password'];
 		$Level = $_POST['Level'];
-		$db = new PDO('mysql:host=localhost;dbname=class_database',$connect_un,$connect_pw);
 		$q= "INSERT INTO teacher (Teacher_id,College,Department,Class,Name,Email,Password,Level) VALUES ('$Teacher_id','$College','$Department','$Class','$Name','$Email','$Password','$Level');";
 		$result = $db->exec($q);
-
 		echo "<script>alert('填寫成功!');location.href='".$_SERVER["HTTP_REFERER"]."';</script>";
-
-	}
-	else
-	{
+	}else{
 		print<<<_END
 			<script>
 				alert("填寫錯誤");

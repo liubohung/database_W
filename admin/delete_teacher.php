@@ -1,170 +1,71 @@
-<?php
-    $Teacher_id = Null;
-	$College = Null;
-	$Department = Null;
-	$Class = Null;
-	$Name =Null;
-	$Email =Null;
-	$Level = Null;
-    if((isset($_POST['button1']))&&($_POST['查詢項目']=="id"))
-    {
-    	$Teacher_id = $_POST['Teacher_id'];
-    	require_once("conect.php");
-		$db = new PDO('mysql:host=localhost;dbname=class_database',$connect_un,$connect_pw);
-		$q= "SELECT * FROM teacher WHERE Teacher_id= '$Teacher_id';";
-		$query = $db->query($q);
-		$datalist = $query->fetchAll();
-		if(empty($datalist))
-		{
-			print<<<_END
-				<script>
-					alert("無此資料");
-				</script>
-			_END;
-		}
-		else
-		{
-			foreach ($datalist as $datainfo)
-		    {
-		       $Teacher_id = $datainfo['Teacher_id'];
-		       $College = $datainfo['College'];
-		       $Department = $datainfo['Department'];
-		       $Class = $datainfo['Class'];
-		       $Name = $datainfo['Name'];
-		       $Email = $datainfo['Email'];
-		       $Level = $datainfo['Level'];
-		       session_start();
-		       $_SESSION['Teacher_id'] = $Teacher_id;
-		    }
-		}
-    }
-    elseif((isset($_POST['button1']))&&($_POST['查詢項目']=="name"))
-    {
-    	$Name = $_POST['Teacher_id'];
-    	require_once("conect.php");
-		$db = new PDO('mysql:host=localhost;dbname=class_database',$connect_un,$connect_pw);
-		$q= "SELECT * FROM teacher WHERE Name= '$Name';";
-		$query = $db->query($q);
-		$datalist = $query->fetchAll();
-		if(empty($datalist))
-		{
-			print<<<_END
-				<script>
-					alert("無此資料");
-				</script>
-			_END;
-		}
-		else
-		{
-			foreach ($datalist as $datainfo)
-		    {
-		       $Teacher_id = $datainfo['Teacher_id'];
-		       $College = $datainfo['College'];
-		       $Department = $datainfo['Department'];
-		       $Class = $datainfo['Class'];
-		       $Name = $datainfo['Name'];
-		       $Email = $datainfo['Email'];
-		       $Level = $datainfo['Level'];
-		       session_start();
-		       $_SESSION['Teacher_id'] = $Teacher_id;
-		    }
-		}
-    }
-    if(isset($_POST['button2']))
-    {
-    	session_start();
-    	//echo 's'. $_SESSION['Teacher_id'] ;
-    	$Teacher_id = $_SESSION['Teacher_id'];
-    	require_once("conect.php");
-    	try
-    	{
-    		$db = new PDO('mysql:host=localhost;dbname=class_database',$connect_un,$connect_pw);
-    	}
-    	catch(PDOException $execption)
-    	{
-    		echo "Connection failed" . $execption->getMessage();
-    	}
-    	$q = "DELETE FROM teacher WHERE Teacher_id = '$Teacher_id';";
-    	if($db->exec($q))
-    	{
-    		print<<<_END
-				<script>
-					alert("刪除成功");
-				</script>
-			_END;
-			$Teacher_id = Null;
-	    	$College = Null;
-	    	$Department = Null;
-	    	$Class = Null;
-	    	$Name =Null;
-	    	$Email = Null;
-	    	$Level = Null;
-    	}
-    	else
-    	{
-    		print<<<_END
-				<script>
-					alert("刪除失敗");
-				</script>
-			_END;
-    		$Teacher_id = Null;
-	    	$College = Null;
-	    	$Department = Null;
-	    	$Class = Null;
-	    	$Name =Null;
-	    	$Email = Null;
-	    	$Level = Null;
-    	}
-    }
-?>
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Delete Student data</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist\css\bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>     
+    <script src="bootstrap-3.3.7-dist\js/bootstrap.min.js"></script>
 </head>
 <body>
+<script>
+	function post_sub(PARAMS) {        
+    			var temp = document.createElement("form");        
+    			temp.action = "DTD.php";        
+    			temp.method = "post";        
+    			temp.style.display = "none";
+    			var opt = document.createElement("input");        
+        		opt.name = 'T_id';        
+        		opt.value = PARAMS;
+        		temp.appendChild(opt);        
+    			document.body.appendChild(temp);        
+    			temp.submit();        
+    			return temp;        
+	}
+    $("#button_s").click(function(){
+        $( "#mytbody" ).empty();
+		$( "#mytbody" ).append("<tr id=\"T_id\"></tr><tr id=\"name\"></tr><tr id=\"college\"></tr><tr id=\"department\"></tr><tr id =\"class\"></tr><tr id=\"mail\"></tr><tr id=\"level\"></tr>");
+        $.ajax({
+            type: "POST",
+            url: "DT.php",
+            dataType: "html",
+            data: {
+                Class: $("#member").val(),
+                Collage: $("#department").val(),
+            },
+            error: function(xhr) {
+                alert('Ajax request 發生錯誤');            
+			},
+            success: function(msg){
+                var array_return =  $.parseJSON ( msg );
+				if(array_return['errorMsg'] == "SQL Connection failed" || array_return['errorMsg'] == "only POST"){
+					alert("發生錯誤");
+				}else{
+					var dii = "<td>";
+                    var eddi = "</td>";
+					$("#T_id").append("<td>教師id</td>" +dii + array_return['Teacher_id'] + eddi);
+					$("#name").append("<td>名字</td>" + dii + array_return['Name'] + eddi);
+					$("#college").append("<td>學院</td>"+dii+array_return['College'] + eddi);
+					$("#department").append("<td>系級</td>"+dii+array_return['Department'] + eddi);
+					$("#class").append("<td>班級</td>"+dii+array_return['Class'] + eddi);
+					$("#mail").append("<td>信箱</td>"+dii+array_return['Email'] + eddi);
+					$("#level").append("<td>職別</td>"+dii+array_return['Level'] + eddi);
+					$("mydiv").append("<input name=\"button_del\" value=\"刪除\" onclick =\"post_sub(" + array_return['Teacher_id'] + ")\">");
+				}  
+            }
+        });
+    });
+    </script>
 	<h1>刪除教師資料</h1>
-	<form action="delete_teacher.php" method="post" >
+	<form>
 		<select name="查詢項目">
 		　<option value="id">教師id</option>
 		　<option value="name">姓名</option>
 		</select>
 		<input type="text" name="Teacher_id">
-		<input type="submit" name="button1" value="查詢"/>
-
-
-	<table width="300" border="1">
-		<tr>
-			<td>教師id</td>
-			<td><?php echo $Teacher_id;?></td>
-		</tr>
-		<tr>
-			<td>姓名</td>
-			<td><?php echo $Name;?></td>
-		</tr>
-		<tr>
-			<td>學院</td>
-			<td><?php echo $College;?></td>
-		</tr>
-		<tr>
-			<td>系級</td>
-			<td><?php echo $Department;?></td>
-		</tr>
-		<tr>
-			<td>班級</td>
-			<td><?php echo $Class;?></td>
-		</tr>
-		<tr>
-			<td>信箱</td>
-			<td><?php echo $Email;?></td>
-		</tr>
-		<tr>
-			<td>職別</td>
-			<td><?php echo $Level;?></td>
-		</tr>
-	</table>
-		<input type="submit" name="button2" value="刪除"/>
+		<input type="submit" id="button_s" value="查詢"/>
 	</form>
+	<table id="mydiv" border="1" align="center"><tbody id ="mytbody">
+	</tbody></table>
 </body>
 </html>
