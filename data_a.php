@@ -8,6 +8,9 @@
 	    <script src="bootstrap-3.3.7-dist\js/bootstrap.min.js"></script>
         <script src="http://d3js.org/d3.v3.min.js"></script>
         <style>
+            body{
+			    background-color: #eaf3db; 
+		    }
             .bar{
                 fill: blue;
             }
@@ -15,6 +18,7 @@
     </head>
     <?php
         include "func.php";
+        session_start();
         nav_judge();
     ?>
         <script>
@@ -41,10 +45,11 @@
                 var s = d3.select('body')
                         .append('svg')
                         .attr({
-                            'width':"100%",
-                            'height':"100%"
+                            'width':'90%',
+                            'height':'100%'
                         })
                         .style({
+                            'margin' : '5%',
                             'border':'1px solid #000'
                         });
 
@@ -98,7 +103,7 @@
                 },false);
 
     </script>
-    <body>
+    <body style="height:10000px">
         
     </body>
 </html>

@@ -8,7 +8,7 @@
 <body>
 	<h1>刪除學生資料</h1>
 	<form action="delete_student.php" method="post" >
-		<select name="查詢項目">
+		<select name="search_item">
 		　<option value="id">學生id</option>
 		　<option value="name">姓名</option>
 		</select>

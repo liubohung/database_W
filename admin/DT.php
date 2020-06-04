@@ -8,7 +8,10 @@
     <script src="bootstrap-3.3.7-dist\js/bootstrap.min.js"></script>
 </head>
 
-<script>
+
+<body>
+	<h1>教師資料</H1>
+	<script>
 	function post_sub(PARAMS) {        
     			var temp = document.createElement("form");        
     			temp.action = "DTD.php";        
@@ -22,36 +25,58 @@
     			temp.submit();        
     			return temp;        
 	}
-</script>
-<body>
-    <h1>教師資料</H1>
+	$(document).ready(function(){
+		$("#button_del").click(function(){
+		if (confirm("是否確定刪除") ) {
+			post_sub();
+		} else {
+
+		}
+		});
+	});
+	</script>
 <?php
-    require_once("conect.php");
+	require_once("conect.php");
     try{
         $db = new PDO('mysql:host=localhost;dbname=class_database',$connect_un,$connect_pw);
-            if (isset($_POST['search_item'] == "id") && isset($_POST['Teacher_id'])) {
-                $Teacher_id = $_POST['Teacher_id'];
-                $sql_q= "SELECT * FROM teacher WHERE Teacher_id= '$Teacher_id';";
-                $query = $db->query($q);
+            if (($_POST['search_item'] == "id") && isset($_POST['Teacher_id'])) {
+                $T_id = $_POST['Teacher_id'];
+                $sql_q= "SELECT * FROM teacher WHERE Teacher_id = '$T_id'; ";
+                $query = $db->query($sql_q);
                 $datalist = $query->fetch();
-            }else if(isset($_POST['search_item'] == "name") && isset($_POST['Teacher_id'])){
+            }else if(($_POST['search_item'] == "name") && isset($_POST['Teacher_id'])){
                 $Name = $_POST['Teacher_id'];
                 $sql_q= "SELECT * FROM teacher WHERE Name= '$Name';";
-                $query = $db->query($q);
+                $query = $db->query($sql_q);
                 $datalist = $query->fetch();
             }
-            print<<<_table
-                <table>
-                    <tr><td>教師id</td><td>$datalist['Teacher_id']</td></tr>
-                    <tr><td>名字</td><td>$datalist['Name']</td></tr>
-                    <tr><td>學院</td><td>$datalist['College']</td></tr>
-                    <tr><td>系級</td><td>$datalist['Department']</td></tr>
-                    <tr><td>班級</td><td>$datalist['Class']</td></tr>
-                    <tr><td>信箱</td><td>$datalist['Email']</td></tr>
-                    <tr><td>職別</td><td>$datalist['Level']</td></tr>
-                </table>
-                <input name=\"button_del\" value=\"刪除\" onclick =\"post_sub(\"$datalist['Teacher_id']\")\">
-                 _table;
+			print "<table><tbody>";
+			print "<tr><td>教師id</td><td>";
+			print $datalist['Teacher_id'];
+			print "</td></tr>";
+			print "	<tr><td>名字</td><td>" ;
+			print $datalist['Name'] ;
+			print "</td></tr>";
+			print "	<tr><td>學院</td><td>";
+			print $datalist['College'];
+			print "</td></tr>";
+			print "	<tr><td>系級</td><td>";
+			print $datalist['Department'] ;
+			print "</td></tr>";
+			print "	<tr><td>班級</td><td>";
+			print $datalist['Class'];
+			print "</td></tr>";
+			print "	<tr><td>信箱</td><td>";
+			print $datalist['Email'];
+			print "</td></tr>";
+			print "	<tr><td>職別</td><td>";
+			print $datalist['Level'];
+			print "</td></tr>";
+            print "</tbody></table>";
+			print "<input id=\"button_del\"  type=\"submit\" value=\"刪除\" onclick =\"post_sub(";
+			print $datalist['Teacher_id'];
+			print ")\">";
+                 
     }catch(PDOException $execption){
         echo "SQL Connection failed";
     }

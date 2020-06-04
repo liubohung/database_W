@@ -18,7 +18,7 @@
     ?>
 	<h1>修改教師資料</h1>
 	<form action="DT.php" method="post">
-		<select name="查詢項目">
+		<select name="search_item">
 		　<option value="id">教師id</option>
 		　<option value="name">姓名</option>
 		</select>

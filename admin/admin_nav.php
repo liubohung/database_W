@@ -19,8 +19,8 @@ function nav_in(){
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">刪除</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="delete_teacher.php">刪除教師</a>
-						<a class="dropdown-item" href="delete_student.php">刪除學生</a>
+						<a class="dropdown-item" href="delete_teacher.php">修改教師</a>
+						<a class="dropdown-item" href="delete_student.php">修改學生</a>
 					</div>
 				</li>
 				<li class="nav-item">

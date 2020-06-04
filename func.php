@@ -15,7 +15,7 @@ function nav_in(){
 							<a href="searchtry.php" aria-haspopup="true" role="button">課程查詢</a>
 						</li>
 						<li>
-							<a href="#" aria-haspopup="true" role="button">選課情況</a>
+							<a href="data_a.php" aria-haspopup="true" role="button">選課情況</a>
 						</li>
 						<li>
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">
@@ -58,7 +58,7 @@ function nav_noin(){
 							<a href="searchtry.php" aria-haspopup="true" role="button">課程查詢</a>
 						</li>
 						<li>
-						    <a href="#" aria-haspopup="true" role="button">選課情況</a>
+						    <a href="data_a.php" aria-haspopup="true" role="button">選課情況</a>
 						</li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">
@@ -89,7 +89,7 @@ function nav_judge() {
 							<a href="searchtry.php" aria-haspopup="true" role="button">課程查詢</a>
 						</li>
 						<li>
-							<a href="#" aria-haspopup="true" role="button">選課情況</a>
+							<a href="data_a.php" aria-haspopup="true" role="button">選課情況</a>
 						</li>
 						<li>
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">
@@ -128,7 +128,7 @@ function nav_judge() {
 							<a href="searchtry.php" aria-haspopup="true" role="button">課程查詢</a>
 						</li>
 						<li>
-						    <a href="#" aria-haspopup="true" role="button">選課情況</a>
+						    <a href="data_a.php" aria-haspopup="true" role="button">選課情況</a>
 						</li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">
