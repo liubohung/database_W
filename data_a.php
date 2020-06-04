@@ -30,7 +30,9 @@
                     foreach($rows as $row){
                         print "{ x:"; 
                         print $i;
-                        print ",w:" + $row['Nownum'] + ",na:" + $row['Name'] + "},";
+                        print ",w:";
+                        print $row['Nownum'];
+                        print ",na:" + $row['Name'] + "},";
                         $i++;
                     }
                 ?>
