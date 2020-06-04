@@ -27,14 +27,12 @@
                     $cdata = $db->query($ALLHELD);
                     $rows = $cdata->fetchAll(PDO::FETCH_ASSOC);
                     $i = 0;
-
                     foreach($rows as $row){
-                        print "{ x:" + $i +",w:" + $row['Nownum'] +",na:" + $row['Name'] + "},";
+                        print "{ x:" + str($i) + ",w:" + $row['Nownum'] + ",na:" + $row['Name'] + "},";
                         $i++;
                     }
                 ?>
                 ];
-
                 var s = d3.select('body')
                         .append('svg')
                         .attr({
@@ -43,7 +41,6 @@
                         }).style({
                             'border':'1px solid #000'
                         });
-
                 s.selectAll('rect')
                 .data(data)
                 .enter()
