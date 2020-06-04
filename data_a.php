@@ -32,21 +32,19 @@
                         print $i;
                         print ",w:";
                         print $row['Nownum'];
-                        print ",na:";
+                        print ",na:\"";
                         print $row['Name'];
-                        print "},";
+                        print "\"},";
                         $i++;
                     }
-                ?>
-                ];
+                ?>];
                 var s = d3.select('body')
                         .append('svg')
                         .attr({
-                            'width':"70%",
-                            'height': "100%"
-                        }).style({
-                            'margin': "5%";
-                            ''
+                            'width':"100%",
+                            'height':"100%"
+                        })
+                        .style({
                             'border':'1px solid #000'
                         });
 
@@ -95,7 +93,7 @@
                     var i = d3.interpolateRound(0, d.w);
                     return function(t) {
                     this.textContent = i(t)+ d.na;
-                    };
+                    }
                 });
                 },false);
 
