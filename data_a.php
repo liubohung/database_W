@@ -28,7 +28,9 @@
                     $rows = $cdata->fetchAll(PDO::FETCH_ASSOC);
                     $i = 0;
                     foreach($rows as $row){
-                        print "{ x:" + str($i) + ",w:" + $row['Nownum'] + ",na:" + $row['Name'] + "},";
+                        print "{ x:"; 
+                        print $i;
+                        print ",w:" + $row['Nownum'] + ",na:" + $row['Name'] + "},";
                         $i++;
                     }
                 ?>
