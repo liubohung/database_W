@@ -32,7 +32,7 @@
                         print $i;
                         print ",w:";
                         print $row['Nownum'];
-                        print ",na:"
+                        print ",na:";
                         print $row['Name'];
                         print "},";
                         $i++;
