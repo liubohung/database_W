@@ -50,7 +50,7 @@
                     <tr><td>信箱</td><td>$datalist['Email']</td></tr>
                     <tr><td>職別</td><td>$datalist['Level']</td></tr>
                 </table>
-                <input name=\"button_del\" value=\"刪除\" onclick =\"post_sub(\"$datalist['Teacher_id']\")\">"
+                <input name=\"button_del\" value=\"刪除\" onclick =\"post_sub(\"$datalist['Teacher_id']\")\">
                  _table;
     }catch(PDOException $execption){
         echo "SQL Connection failed";

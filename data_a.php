@@ -25,7 +25,6 @@
                     $i = 0;
 
                     foreach($rows as $row){
-                        Nownum[$i] = $row['Nownum'];
                         print "{ x:" + $i +",w:" + $row['Nownum'] +",na:" + $row['Name'] + "},";
                         $i++;
                     }
