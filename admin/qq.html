@@ -33,49 +33,49 @@
             return temp;        
         }
     </script>
-	<table id="mydiv" border="1" align="center">
+	<!-- <table id="mydiv" border="1" align="center">
         <tbody id ="mytbody">
         </tbody>
-    </table>
+    </table> -->
     <!-- <input type="submit" name="button_del" value="刪除" onclick="post_sub(11)"> -->
     <script>
-        $("#button_s").click(function(){
-            $( "#mytbody" ).empty();
-            console.log("111");
-            $.ajax({
-                type: "POST",
-                url: "DT.php",
-                dataType: "html",
-                data: {
-                    Class: $("#member").val(),
-                    Collage: $("#department").val(),
-                },
-                error: function(xhr) {
-                    alert('Ajax request 發生錯誤');  
-                    $("#del_button").append("<input type=\"submit\" name=\"button_del\" value=\"刪除\" onclick =\"post_sub()\"></input>");
+        $(document).ready(function(){
+   		    $("#button_s").click(function(){
+                console.log("111");
+                $.ajax({
+                    type: "POST",
+                    url: "DT.php",
+                    dataType: "html",
+                    data: {
+                        Class: $("#member").val(),
+                        Collage: $("#department").val(),
                     },
-                success: function(msg){
-                    var array_return =  $.parseJSON ( msg );
-                    if(array_return['errorMsg'] == "SQL Connection failed" || array_return['errorMsg'] == "only POST"){
-                        alert("發生錯誤");
-                        $("#del_button").append("<input type=\"submit\" name=\"button_del\" value=\"刪除\" onclick =\"post_sub()\">");
-                    }else{
-                        var dii = "<td>";
-                        var eddi = "</td>";
-                        $( "#mytbody" ).append("<tr id=\"T_id\"></tr><tr id=\"name\"></tr><tr id=\"college\"></tr><tr id=\"department\"></tr><tr id =\"class\"></tr><tr id=\"mail\"></tr><tr id=\"level\"></tr>");
-                        $("#T_id").append("<td>教師id</td>" +dii + array_return['Teacher_id'] + eddi);
-                        $("#name").append("<td>名字</td>" + dii + array_return['Name'] + eddi);
-                        $("#college").append("<td>學院</td>"+dii+array_return['College'] + eddi);
-                        $("#department").append("<td>系級</td>"+dii+array_return['Department'] + eddi);
-                        $("#class").append("<td>班級</td>"+dii+array_return['Class'] + eddi);
-                        $("#mail").append("<td>信箱</td>"+dii+array_return['Email'] + eddi);
-                        $("#level").append("<td>職別</td>"+dii+array_return['Level'] + eddi);
-                        $("#del_button").html("<input type=\"submit\" name=\"button_del\" value=\"刪除\" onclick =\"post_sub(" + array_return['Teacher_id'] + ")\">");
-                    }  
-                }
+                    error: function(xhr) {
+                        alert('Ajax request 發生錯誤');  
+                    },
+                    success: function(msg){
+                        var array_return =  $.parseJSON ( msg );
+                        if(array_return['errorMsg'] == "SQL Connection failed" || array_return['errorMsg'] == "only POST"){
+                            alert("發生錯誤");
+                        }else{
+                            var txt3=document.createElement("table"); 
+                            var dii = "<td>";
+                            var eddi = "</td>";
+                            $("table" ).append("<tr id=\"T_id\"></tr><tr id=\"name\"></tr><tr id=\"college\"></tr><tr id=\"department\"></tr><tr id =\"class\"></tr><tr id=\"mail\"></tr><tr id=\"level\"></tr>");
+                            $("table").append("<td>教師id</td>" +dii + array_return['Teacher_id'] + eddi);
+                            $("table").append("<td>名字</td>" + dii + array_return['Name'] + eddi);
+                            $("table").append("<td>學院</td>"+dii+array_return['College'] + eddi);
+                            $("table").append("<td>系級</td>"+dii+array_return['Department'] + eddi);
+                            $("table").append("<td>班級</td>"+dii+array_return['Class'] + eddi);
+                            $("table").append("<td>信箱</td>"+dii+array_return['Email'] + eddi);
+                            $("table").append("<td>職別</td>"+dii+array_return['Level'] + eddi);
+                            $("table").append("<input type=\"submit\" name=\"button_del\" value=\"刪除\" onclick =\"post_sub(" + array_return['Teacher_id'] + ")\">");
+                        }  
+                    }
+                });
             });
         });
     </script>
-    <div id ="del_button"></div>    
+    <!-- <div id ="del_button"></div>     -->
 </body>
 </html>
