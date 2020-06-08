@@ -1,3 +1,6 @@
+<?php
+	session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -133,7 +136,6 @@
 </head>
 <?php
 	include "func.php";
-	session_start();
 	nav_in();
 	$account = $_SESSION['account'];
 ?>
@@ -152,7 +154,6 @@
 	}	
 	function sbDrop(event){
    		event.preventDefault();
-    	// if()
     	console.log(event.target.class);
     	var data=event.dataTransfer.getData("text");
     	event.currentTarget.appendChild(document.getElementById(data));
@@ -187,11 +188,11 @@
     	var str = 'div#' + data + ' .name';
     		var addC = ($(str).text().replace(/[^0-9]/ig,""));
     		console.log(str);
-    		console.log(($(str).text().replace(/[^0-9]/ig,"")));
+    		console.log(addC);
 			$.ajax({
 					type: "POST",
 					url: "addclass.php",
-					dataType: "html",
+					dataType: "json",
 					data: {
 						addchoose: addC
 					},
@@ -199,7 +200,7 @@
 						alert('Ajax request 發生錯誤');            
 					},
 					success: function(msg){
-						alert ("加選成功");
+						alert(msg.errorMsg);
 						history.go(0);
 					}
 			});	
@@ -276,6 +277,7 @@
 							var array_return =  $.parseJSON ( msg );
 							// console.log(array_return[0].Name);
 							for(var i=0 ;i<msg.length;i++){
+								console.log(array_return[i].Name.toString());
 								var dii = "<div id=" + array_return[i].Name + array_return[i].Code + " draggable=\"true\" class=\"div2\" ondragstart=\"Drag(event)\" ondragexit=\"EDrop(event)\"><p class=\"name\">";
 								var eddi = "</p></div>";
 								var str = dii +  array_return[i].Name +  array_return[i].Code + eddi;
@@ -339,15 +341,7 @@
 				<p class="name">系統程式<br>3779</p>
 			</div>
 		</div>
-		<script>
-			$("#Footer").on("mouseenter mouseleave", function (event) { //挷定滑鼠進入及離開事件
-			if (event.type == "mouseenter") {
-				$(this).css({"overflow-y": "scroll"}); //滑鼠進入
-			} else {
-				$(this).scrollTop(0).css({"overflow-y": "hidden"}); //滑鼠離開
-			}
-			});
-		</script>
+		
 	</div>
 </div>
 </body>

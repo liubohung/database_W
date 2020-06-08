@@ -31,7 +31,7 @@
 	nav_in();
 	print "<div class=\"container\">";
 	$data = "";
-	$data .= '
+	$data = $data . '
 	<div class="card my-2">
 	  <h4 class="card-header text-center">
 	    Service status
@@ -54,8 +54,6 @@
 	$services[] = array("port" => "8112",     "service" => "Deluge Web",             	"ip" => "") ;
 	$services[] = array("port" => "80",       "service" => "Internet Connection",     "ip" => "google.com") ;
 	$services[] = array("port" => "8083",     "service" => "Vesta panel",             	"ip" => "") ;
-
-
 	//begin table for status
 	$data .= "<small><table  class='table table-striped table-sm '><thead><tr><th>Service</th><th>Port</th><th>Status</th></tr></thead>";
 	foreach ($services  as $service) {
@@ -185,23 +183,13 @@
 
 	isset($free_mem[1])?$free_mem=$free_mem[1] + $cache_mem[1]:$free_mem=null;
 
-	//$free_mem = $free_mem[1] + $cache_mem[1];
 
 
-	//Get top mem usage
 	$tom_mem_arr = array();
 	$top_cpu_use = array();
 
-	//-- The number of processes to display in Top RAM user
 	$i = 5;
 
-
-	/* ps command:
-	-e to display process from all user
-	-k to specify sorting order: - is desc order follow by column name
-	-o to specify output format, it's a list of column name. = suppress the display of column name
-	head to get only the first few lines 
-	*/
 	exec("ps -e k-rss -o rss,args | head -n $i", $tom_mem_arr, $status);
 	exec("ps -e k-pcpu -o pcpu,args | head -n $i", $top_cpu_use, $status);
 

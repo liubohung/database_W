@@ -1,3 +1,6 @@
+<?php
+	session_start();
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,7 +21,6 @@
     </head>
     <?php
         include "func.php";
-        session_start();
         nav_judge();
     ?>
         <script>

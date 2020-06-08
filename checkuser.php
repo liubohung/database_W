@@ -16,25 +16,16 @@
 				If you need to change password;
 				please go to here;
 				_TEXT_);
-				
 			}else{
 				$db =null;
-				print<<<_END
-				<script>
-				alert ("請重新輸入,");
-				setTimeout(function(){window.location.href='newuser.html';},1000);
-				</script>
-				_END;
+				alert("請重新輸入");
+				header("refresh:0;url=cwdsearch.php");
 			}
 		}catch (PODException $e){
 			print "couldn't to connect to db " . $e->getMessage();
 		}
 	}else{
-		print<<<_END
-				<script>
-				alert ("請再次重新輸入");
-				setTimeout(function(){window.location.href='newuser.html';},10000);
-				</script>
-		_END;
+		alert("請再次重新輸入");
+		header("refresh:0;url=cwdsearch.php");
 	}
 ?>

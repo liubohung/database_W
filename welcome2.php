@@ -1,3 +1,6 @@
+<?php
+	session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +17,8 @@
 			line-height: 24px;
     		letter-spacing: 3px;
 			line-height: 1.5em;
-			font-size:150%; 
+			font-size:150%;
+			margin:10%;
 		}
 		.button {
   		border: none;
@@ -34,7 +38,6 @@
 	<?php
 		include "func.php";
 		require_once("conect.php");
-		session_start();
 		nav_in();
 		$account = $_SESSION['account'];
 		$HELD = "SELECT class.Code,Day,Time,class_detail.Name FROM time JOIN class ON class.Code = time.Code JOIN class_detail ON class.Code = class_detail.Code WHERE Person_id = '$account' ORDER BY Time;";
@@ -93,12 +96,11 @@
 	})	
 	</script>
 	<div style="text-align:center;">
-		<form action="addclass.php" method="post" class="fromcss" >
+		<form action="addclass.php" method="post" class="fromcss" style="float: left;" >
 			<p>選課代號<br><input class ="inputcss" type="text" name="addchoose"></p>
 			<input type="submit" name="value">
 		</form>
-		<br>
-		<form name="subclass" action="subclass.php" method="post" class="fromcss" onclick="return false">
+		<form name="subclass" action="subclass.php" method="post" class="fromcss" style="float: right;" onclick="return false">
 			<p>退選代號<br><input class ="inputcss" type="text" name="subchoose"></p>
 			<input type="submit" name="button" id="button" value="送出" />
 		</form>

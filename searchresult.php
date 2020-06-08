@@ -3,14 +3,6 @@
 <head>
 </head>
 <?php 
-	function research(){
-		print<<<_END
-			<script>
-			alert ("請重新查詢");
-			setTimeout(function(){window.location.href='searchtry.php';},1000);
-			</script>
-		_END;
-	}
 	require_once("Noname.php");
 	if ( isset($_POST['search_class'] )) {
 		$code = intval( $_POST['search_class'] );
@@ -28,7 +20,7 @@
 				print " <table width=\"300\" border=\"0\"> ";
 				for($i =0 ; $i<9; $i++) {
 					print "<tr>
-　							<td> $good[$i] </td>
+							<td> $good[$i] </td>
 							<td> $row[$i] </td>
 							</tr> ";
 				}
@@ -38,7 +30,7 @@
 			}
 		}
 	}else{
-		research();
+		alert("請重新查詢");
 	}
 ?>
 </body>

@@ -1,3 +1,6 @@
+<?php
+	session_start();
+?>
 <!DOCTYPE html>
 	<html>
 		<head>
@@ -24,7 +27,6 @@
 	<body>
 	<?php
 	    include "func.php";
-	    session_start();
 	    nav_noin();
     ?>
 		<h3>密碼查詢</h3>

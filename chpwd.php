@@ -1,3 +1,6 @@
+<?php
+	session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,7 +44,6 @@
 	</script>
 	<?php 
 	include "func.php";
-	session_start();
 	nav_in();
 	?>
 	<div style="text-align:center";>
